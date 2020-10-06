@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>海冰</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1601966633474">
+<link rel="shortcut icon" href="/favicon.ico?v=1601968708069">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -76,7 +76,7 @@
             <li class="nav-item ">
               
               
-                <a href="http://47.99.137.103/blog/" target="_self">
+                <a href="https://haibing.xyz/" target="_self">
                   <i class="fa fa-globe"></i> 首页
                 </a>
               
@@ -89,7 +89,7 @@
             <li class="nav-item ">
               
               
-                <a href="http://47.99.137.103/blog/archives/" target="_self">
+                <a href="https://haibing.xyz/archives/" target="_self">
                   <i class="fa fa-globe"></i> 归档
                 </a>
               
@@ -102,7 +102,7 @@
             <li class="nav-item ">
               
               
-                <a href="http://47.99.137.103/blog/tags/" target="_self">
+                <a href="https://haibing.xyz/tags/" target="_self">
                   <i class="fa fa-globe"></i> 标签
                 </a>
               
@@ -115,7 +115,7 @@
             <li class="nav-item ">
               
               
-                <a href="http://47.99.137.103/blog/post/about/" target="_self">
+                <a href="https://haibing.xyz/post/about/" target="_self">
                   <i class="fa fa-globe"></i> 关于
                 </a>
               
@@ -190,19 +190,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">6</span>
+        <span class="site-item-stat-count">12</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -241,6 +241,30 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -306,7 +330,7 @@
   
   
   <div class="bg-img">
-    <img src="/media/images/custom-bgImg.png" />
+    <img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/custom-bgImg.png" />
   </div>
   
   
@@ -1035,6 +1059,88 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/ffmpeg录制直播流/"" data-c="
+          &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ffmpeg -i https://mobilelive-cnc-cdn.ysp.cctv.cn/ysp/E2B44C65BEA385FD28B7651233347CD4D5AC888EEDA8B8B9EE86E5C53F6B33D108F7A7B40E235942544582364B9D7B8BEF3CCF73410685F199705CCF16C2E645D6C69E08A33FDE8F87B2E4C4737A6DD9126ED29E6B703C7E152D8ECCDFF65D1F/2001891501_hd.m3u8 -c:v copy -c:a copy -bsf:a aac_adtstoasc abc.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这条命令会持续不断地抓取网络视频流，然后写入abc.mp4文件，直到你按下键盘上的“Q”键才停止。如果你就想录制一小段时间（比如60秒），可以在-i参数前加-t参数来控制，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -t 60 -i http://60.199.188.151/HLS/WG_ETTV-N/index.m3u8 abc.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考:https://blog.csdn.net/happydeer/article/details/52735694&lt;/p&gt;
+&lt;h2 id=&#34;ffmpeg-安装&#34;&gt;ffmpeg 安装&lt;/h2&gt;
+&lt;p&gt;参考:https://blog.csdn.net/u013314786/article/details/89682800&lt;/p&gt;
+&lt;p&gt;cd /usr/bin&lt;/p&gt;
+&lt;p&gt;ln -s /root/ffmpeg-4.2.2-amd64-static/ffmpeg ffmpeg&lt;/p&gt;
+&lt;p&gt;ln -s /root/ffmpeg-4.2.2-amd64-static/ffprobe ffprobe&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nohup ffmpeg -i https://mobilelive-cnc-cdn.ysp.cctv.cn/ysp/E2B44C65BEA385FD28B7651233347CD4D5AC888EEDA8B8B9EE86E5C53F6B33D108F7A7B40E235942544582364B9D7B8BEF3CCF73410685F199705CCF16C2E645D6C69E08A33FDE8F87B2E4C4737A6DD9126ED29E6B703C7E152D8ECCDFF65D1F/2001891501_hd.m3u8 -c:v copy -c:a copy -bsf:a aac_adtstoasc abc.mp4 &amp;amp;&lt;/code&gt;&lt;/pre&gt;
+">ffmpeg 录制直播流信号</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/"" data-c="
+          &lt;h1 id=&#34;转码&#34;&gt;转码&lt;/h1&gt;
+&lt;p&gt;最简单命令如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i out.ogv -vcodec h264 out.mp4
+ffmpeg -i out.ogv -vcodec mpeg4 out.mp4
+ffmpeg -i out.ogv -vcodec libxvid out.mp4
+ffmpeg -i out.mp4 -vcodec wmv1 out.wmv
+ffmpeg -i out.mp4 -vcodec wmv2 out.wmv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;-i 后面是输入文件名。-vcodec 后面是编码格式，h264 最佳，但 Windows 系统默认不安装。如果是要插入 ppt 的视频，选择 wmv1 或 wmv2 基本上万无一失。&lt;/p&gt;
+&lt;p&gt;附加选项：-r 指定帧率，-s 指定分辨率，-b 指定比特率；于此同时可以对声道进行转码，-acodec 指定音频编码，-ab 指定音频比特率，-ac 指定声道数，例如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i out.ogv -s 640x480 -b 500k -vcodec h264 -r 29.97 -acodec libfaac -ab 48k -ac 2 out.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;剪切&#34;&gt;剪切&lt;/h1&gt;
+&lt;p&gt;用 -ss 和 -t 选项， 从第 30 秒开始，向后截取 10 秒的视频，并保存：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i input.wmv -ss 00:00:30.0 -c copy -t 00:00:10.0 output.wmv
+ffmpeg -i input.wmv -ss 30 -c copy -t 10 output.wmv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;达成相同效果，也可以用 -ss 和 -to 选项， 从第 30 秒截取到第 40 秒：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i input.wmv -ss 30 -c copy -to 40 output.wmv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;值得注意的是，ffmpeg 为了加速，会使用关键帧技术， 所以有时剪切出来的结果在起止时间上未必准确。 通常来说，把 -ss 选项放在 -i 之前，会使用关键帧技术； 把 -ss 选项放在 -i 之后，则不使用关键帧技术。 如果要使用关键帧技术又要保留时间戳，可以加上 -copyts 选项：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -ss 00:18:54 -i 5G.mp4 -to 01:06:47 -c copy -copyts 5Gcut.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考：ffmpeg.org&lt;/p&gt;
+&lt;p&gt;ffmpeg -i 5G.mp4 -ss 00:18:54 -to 01:06:47 -c copy  5Gcut.mp4&lt;/p&gt;
+&lt;h1 id=&#34;合并&#34;&gt;合并&lt;/h1&gt;
+&lt;p&gt;把两个视频文件合并成一个。&lt;/p&gt;
+&lt;p&gt;简单地使用 concat demuxer，示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat mylist.txt
+file &#39;/path/to/file1&#39;
+file &#39;/path/to/file2&#39;
+file &#39;/path/to/file3&#39;
+
+$ ffmpeg -f concat -i mylist.txt -c copy output
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更多时候，由于输入文件的多样性，需要转成中间格式再合成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i input1.avi -qscale:v 1 intermediate1.mpg
+ffmpeg -i input2.avi -qscale:v 1 intermediate2.mpg
+cat intermediate1.mpg intermediate2.mpg &amp;gt; intermediate_all.mpg
+ffmpeg -i intermediate_all.mpg -qscale:v 2 output.avi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考：stackoverflow； ffmpeg.org。&lt;/p&gt;
+&lt;h1 id=&#34;调整播放速度&#34;&gt;调整播放速度&lt;/h1&gt;
+&lt;p&gt;加速四倍：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i TheOrigin.mp4 -vf  &amp;quot;setpts=0.25*PTS&amp;quot; UpTheOrigin.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;四倍慢速：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ffmpeg -i TheOrigin.mp4 -vf  &amp;quot;setpts=4*PTS&amp;quot; DownTheOrigin.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考:https://fzheng.me/2016/01/08/ffmpeg/&lt;br&gt;
+https://blog.csdn.net/chance_yin/article/details/16118903&lt;/p&gt;
+">FFmpeg：视频转码、剪切、合并、播放速调整</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/ffmpeg间隔截取视频帧/"" data-c="
+          &lt;pre&gt;&lt;code&gt;ffmpeg -i abc2.mp4 -vf fps=0.01 a/out%d.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考:https://blog.csdn.net/zongyue_wang/article/details/81911196&lt;/p&gt;
+">ffmpeg间隔截取视频帧</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/"" data-c="
           &lt;p&gt;https://qrbtf.com/&lt;/p&gt;
 ">参数化二维码生成器</a>
@@ -1044,6 +1150,276 @@
         <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/"" data-c="
           &lt;p&gt;https://www.todesk.com/download.html&lt;/p&gt;
 ">ToDesk 极致流畅的远程协助软件</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/Docker常用命令/"" data-c="
+          &lt;h1 id=&#34;docker-images-列出本地镜像&#34;&gt;docker images /列出本地镜像&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker images -a
+docker images -q
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    HB-MacBook-Pro:~ apple$ docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    ubuntu              latest              a2a15febcdf3        2 months ago        64.2MB
+    ubuntu              14.04               2c5e00d77a67        5 months ago        188MB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker-search-搜索镜像&#34;&gt;docker search /搜索镜像&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker search tomcat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    HB-MacBook-Pro:~ apple$ docker search tomcat
+    NAME                          DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+    tomcat                        Apache Tomcat is an open source implementati…   2540                [OK]
+    tomee                         Apache TomEE is an all-Apache Java EE certif…   69                  [OK]
+    dordoka/tomcat                Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 base…   53                                      [OK]
+    bitnami/tomcat                Bitnami Tomcat Docker Image                     29                                      [OK]
+    kubeguide/tomcat-app          Tomcat image for Chapter 1                      27
+    consol/tomcat-7.0             Tomcat 7.0.57, 8080, &amp;quot;admin/admin&amp;quot;              16                                      [OK]
+    cloudesire/tomcat             Tomcat server, 6/7/8                            15                                      [OK]
+    aallam/tomcat-mysql           Debian, Oracle JDK, Tomcat &amp;amp; MySQL              11                                      [OK]
+    arm32v7/tomcat                Apache Tomcat is an open source implementati…   9
+    rightctrl/tomcat              CentOS , Oracle Java, tomcat application ssl…   5                                       [OK]
+    maluuba/tomcat7-java8         Tomcat7 with java8.                             4
+    unidata/tomcat-docker         Security-hardened Tomcat Docker container.      4                                       [OK]
+    amd64/tomcat                  Apache Tomcat is an open source implementati…   2
+    arm64v8/tomcat                Apache Tomcat is an open source implementati…   2
+    i386/tomcat                   Apache Tomcat is an open source implementati…   1
+    camptocamp/tomcat-logback     Docker image for tomcat with logback integra…   1                                       [OK]
+    99taxis/tomcat7               Tomcat7                                         1                                       [OK]
+    oobsri/tomcat8                Testing CI Jobs with different names.           1
+    ppc64le/tomcat                Apache Tomcat is an open source implementati…   1
+    secoresearch/tomcat-varnish   Tomcat and Varnish 5.0                          0                                       [OK]
+    appsvc/tomcat                                                                 0
+    picoded/tomcat7               tomcat7 with jre8 and MANAGER_USER / MANAGER…   0                                       [OK]
+    cfje/tomcat-resource          Tomcat Concourse Resource                       0
+    jelastic/tomcat               An image of the Tomcat Java application serv…   0
+    s390x/tomcat                  Apache Tomcat is an open source implementati…   0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker-pull-拉取镜像&#34;&gt;docker pull /拉取镜像&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker-rmi-删除镜像&#34;&gt;docker rmi /删除镜像&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker rmi -f 镜像ID  /删除指定镜像
+docker rmi -f $(docker search -qa) /删除全部镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;h1 id=&#34;启动容器&#34;&gt;启动容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;启动交付式容器&#34;&gt;启动交付式容器&lt;/h3&gt;
+&lt;p&gt;-t 打开容器终端&lt;/p&gt;
+&lt;p&gt;-i  保持终端打开&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run -it --name  xx image
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    HB-MacBook-Pro:~ apple$ docker run -it a2a15febcdf3
+    root@fe809bbcb339:/# ls
+    bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;列出正在运行的容器&#34;&gt;列出正在运行的容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker ps [OPTIONS]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    HB-MacBook-Pro:~ apple$ docker ps
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+    fe809bbcb339        a2a15febcdf3        &amp;quot;/bin/bash&amp;quot;         51 seconds ago      Up 50 seconds                           funny_cartwright
+    HB-MacBook-Pro:~ apple$ docker ps -a
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS                   NAMES
+    fe809bbcb339        a2a15febcdf3        &amp;quot;/bin/bash&amp;quot;         5 minutes  ago       Exited (0) 39 seconds ago                           funny_cartwright
+    9c93d87999d0        ubuntu              &amp;quot;/bin/bash&amp;quot;         44 minutes ago      Exited (0) 44 minutes ago                           eloquent_banach
+    03362b0a0589        ubuntu              &amp;quot;/bin/bash&amp;quot;         8 weeks ago         Exited (255) 4 weeks ago    0.0.0.0:32769-&amp;gt;80/tcp   nginx
+    HB-MacBook-Pro:~ apple$ docker ps -l
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+    fe809bbcb339        a2a15febcdf3        &amp;quot;/bin/bash&amp;quot;         5 minutes ago       Exited (0) 50 seconds ago                       funny_cartwright
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;退出容器&#34;&gt;退出容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    exit 容器停止退出
+    ctrl+P+Q 容器不停止退出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;启动容器-2&#34;&gt;启动容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker start 容器ID或容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;重启容器&#34;&gt;重启容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker restart 容器ID或容器名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;停止容器&#34;&gt;停止容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker stop  容器ID或者容器名
+    docker kill 容器ID或者容器名 /强制停止
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;删除已停止容器&#34;&gt;删除已停止容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker rm 容器ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;守护式进程启动容器&#34;&gt;守护式进程启动容器&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker run -d 镜像名或者镜像ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;后台运行必须有前台进程。&lt;/p&gt;
+&lt;h1 id=&#34;查看容器日志&#34;&gt;查看容器日志&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker logs -f -t --tail 容器ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;查看容器内运行的进程&#34;&gt;查看容器内运行的进程&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker top 容器ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;查看容器内部细节&#34;&gt;查看容器内部细节&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker inspect 容器ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;重新进入正在运行的容器并交互&#34;&gt;重新进入正在运行的容器并交互&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker attach 容器ID  /重新进入不启动新的进程
+    docker exec -it 容器ID bashShell  /重新进入并启动新的进程
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;拷贝容器内文件到宿主机&#34;&gt;拷贝容器内文件到宿主机&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    docker cp 容器ID:容器目录 宿主机目录
+&lt;/code&gt;&lt;/pre&gt;
+">Docker常用命令</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/markdown语法/"" data-c="
+          &lt;h2 id=&#34;一标题&#34;&gt;一.标题&lt;/h2&gt;
+&lt;h3 id=&#34;1-使用-和-标记&#34;&gt;1. 使用 = 和 - 标记&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;一级标题
+===
+
+二级标题
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;h1 id=&#34;一级标题&#34;&gt;一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;二级标题&#34;&gt;二级标题&lt;/h2&gt;
+&lt;h3 id=&#34;2-使用-标记&#34;&gt;2. 使用 # 标记&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;h1 id=&#34;一级标题-2&#34;&gt;一级标题&lt;/h1&gt;
+&lt;h2 id=&#34;二级标题-2&#34;&gt;二级标题&lt;/h2&gt;
+&lt;h1 id=&#34;二-段落格式&#34;&gt;二. 段落格式&lt;/h1&gt;
+&lt;h2 id=&#34;换行&#34;&gt;换行&lt;/h2&gt;
+&lt;p&gt;两个以上空格加上回车&lt;br&gt;
+或者空行表示另起一段&lt;/p&gt;
+&lt;h2 id=&#34;字体&#34;&gt;字体&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;*斜体*
+_斜体_
+**粗体**
+***粗斜体***
+~~删除线~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;br&gt;
+&lt;em&gt;斜体&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;粗体&lt;/strong&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;粗斜体&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;s&gt;删除线&lt;/s&gt;&lt;/p&gt;
+&lt;h1 id=&#34;三-分割线&#34;&gt;三. 分割线&lt;/h1&gt;
+&lt;p&gt;三个以上的星号、减号、底线建立分割线&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+***
+___
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;四-列表&#34;&gt;四. 列表&lt;/h1&gt;
+&lt;p&gt;无序列表使用星号、加好、减号建立。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* 第一项
++ 第二项
+- 第三项
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一项&lt;/li&gt;
+&lt;li&gt;第二项&lt;/li&gt;
+&lt;li&gt;第三项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有序列表使用数字加上.号建立。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 第一项
+2. 第二项
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一项&lt;/li&gt;
+&lt;li&gt;第二项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;五-区块&#34;&gt;五. 区块&lt;/h1&gt;
+&lt;p&gt;使用 &amp;gt; 号建立区块。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   &amp;gt; 区块
+   &amp;gt; 区块第二行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;区块&lt;br&gt;
+区块第二行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;六-代码&#34;&gt;六. 代码&lt;/h1&gt;
+&lt;p&gt;使用四个空格，或者两个制表符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    代码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  ``````
+  daima
+  ``````
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;daima
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;七-图片&#34;&gt;七. 图片&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;![alt 属性文本](图片地址)
+![alt 属性文本](图片地址 &amp;quot;可选标题&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;开头一个感叹号 !&lt;/li&gt;
+&lt;li&gt;接着一个方括号，里面放上图片的替代文字&lt;/li&gt;
+&lt;li&gt;接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 &#39;title&#39; 属性的文字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2019/10/19/O5LIAHqDNoYt9uJ.png&#34; alt=&#34;图片示例&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;八-表格&#34;&gt;八. 表格&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt; |  表头  | 表头  |
+ | ------  |  ------ |
+ | 单元格 | 单元格 |
+ | 单元格 | 单元格 |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表头&lt;/th&gt;
+&lt;th&gt;表头&lt;/th&gt;
+&lt;th&gt;表头&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;td&gt;单元格&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;九-链接&#34;&gt;九. 链接&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;[链接文字](链接地址) 或者 &amp;lt;http://www.baidu.com&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;示例:&lt;br&gt;
+&lt;a href=&#34;http:www.baidu.com&#34;&gt;百度&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://www.baidu.com&#34;&gt;http://www.baidu.com&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;十-转义&#34;&gt;十. 转义&lt;/h1&gt;
+&lt;p&gt;Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：&lt;/p&gt;
+&lt;p&gt;\   反斜杠&lt;/p&gt;
+&lt;p&gt;`   反引号&lt;/p&gt;
+&lt;p&gt;*   星号&lt;/p&gt;
+&lt;p&gt;_   下划线&lt;/p&gt;
+&lt;p&gt;{}  花括号&lt;/p&gt;
+&lt;p&gt;[]  方括号&lt;/p&gt;
+&lt;p&gt;()  小括号&lt;/p&gt;
+&lt;p&gt;#   井字号&lt;/p&gt;
+&lt;p&gt;+   加号&lt;/p&gt;
+&lt;p&gt;-   减号&lt;/p&gt;
+&lt;p&gt;.   英文句点&lt;/p&gt;
+&lt;p&gt;!   感叹号&lt;/p&gt;
+">markdown语法</a>
       </div>
       
       <div class="item">
@@ -1072,6 +1448,41 @@
 &lt;video id=&#34;video&#34; controls=&#34;&#34; preload=&#34;none&#34; poster=&#34;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg&#34;&gt;
       &lt;source id=&#34;mp4&#34; src=&#34;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4&#34; type=&#34;video/mp4&#34;&gt;
       &lt;/video&gt;">markdown插入视频</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/使用nohup设置后台进程/"" data-c="
+          &lt;pre&gt;&lt;code&gt;引言： 有时候需要在Linux上设置一个后台进程，但是当你关闭terminal之时，它会被系统kill掉，那该如何来实现其后台进程能一直运行下去呢？
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;使用方式&#34;&gt;使用方式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;nohup command-with-options &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当在屏幕上敲击上述命令之后，屏幕上会出现如下信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ nohup: ignoring input and appending output to `nohup.out’
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;敲击回车，就退出了nohup.out当前的界面，进入正常的命令行。&lt;/p&gt;
+&lt;h2 id=&#34;输出日志信息&#34;&gt;输出日志信息&lt;/h2&gt;
+&lt;p&gt;接下来的输出的日志信息，将输出到nohup.log.即将屏幕上输出的日志信息直接输出到nohup.log文件。&lt;/p&gt;
+&lt;h2 id=&#34;后台进程的标识符&#34;&gt;后台进程的标识符&lt;/h2&gt;
+&lt;p&gt;如果一个命令只使用&amp;amp;来标识，则表示其在当前Session中，运行在后台。如果当前Session关闭或者当前的terminal工具关闭，则其附属的进程将会关闭。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;正常运行的后台进程都是需要nohup与&amp;amp;，两者并行使用的，方可保证其在后台正常运行。&lt;/p&gt;
+&lt;h2 id=&#34;查看后台任务&#34;&gt;查看后台任务&lt;/h2&gt;
+&lt;p&gt;jobs -l&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;jobs -l
+
+[1]  + suspended  nohup python3 fang.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;后台任务转前台&#34;&gt;后台任务转前台&lt;/h2&gt;
+&lt;p&gt;fg %任务编号&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(base) apple in ~/py λ fg %1
+
+[1]  + 1000 continued  nohup python3 fang.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;版权声明：本文为CSDN博主「bladestone」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。&lt;br&gt;
+原文链接：https://blog.csdn.net/blueheart20/article/details/78226066&lt;/p&gt;
+">使用nohup设置后台进程</a>
       </div>
       
       <div class="item">
