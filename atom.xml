@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://haibing.xyz</id>
     <title>海冰</title>
-    <updated>2020-10-06T12:40:13.080Z</updated>
+    <updated>2020-10-11T05:13:55.637Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://haibing.xyz"/>
     <link rel="self" href="https://haibing.xyz/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://haibing.xyz/images/avatar.png</logo>
     <icon>https://haibing.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, 海冰</rights>
+    <entry>
+        <title type="html"><![CDATA[OBS如何添加NDI来源教程]]></title>
+        <id>https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/</id>
+        <link href="https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/">
+        </link>
+        <updated>2020-10-10T08:59:43.000Z</updated>
+        <content type="html"><![CDATA[<p>1、正确安装OBS软件。</p>
+<p>2、打开OBS软件，在“来源”的空闲区域点击右键，或是点击左下角位置“+”，会弹出“添加”选项，可以显示当前可添加的视频源列表，比如图像、场景、媒体源等。如果没有显示“NDI来源”一项，说明需要安装obs-ndi插件。</p>
+<figure data-type="image" tabindex="1"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/20201010171547.png" alt="" loading="lazy"></figure>
+<p>3、打开网站链接：<a href="https://github.com/Palakis/obs-ndi/releases">https://github.com/Palakis/obs-ndi/releases</a>，点击对应安装包将obs-ndi插件下载至本地，然后进行安装。</p>
+<figure data-type="image" tabindex="2"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171837.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171837" loading="lazy"></figure>
+<p>这里以WIN64位为例：</p>
+<p>解压NDI插件包后，将data文件夹下obs-plugins文件夹里的文件全部复制到OBS的同名文件夹下，将obs-plugins文件夹下64bits文件夹里的文件全部复制到OBS的同名文件夹下。启动OBS会提示缺少NewTek NDI的ndi-runtime-4.5.1-Windows.exe程序。点击链接<a href="https://ndi.palakis.fr/runtime/ndi-runtime-4.5.1-Windows.exe">https://ndi.palakis.fr/runtime/ndi-runtime-4.5.1-Windows.exe</a>下载安装。</p>
+<p>安装之后在“来源”里面添加可以看到“NDI来源”。（添加插件之后，可能需要重启程序或是电脑才能生效）</p>
+<p>4、点击“NDI来源”，针对新建NDI源设置名称，然后点击“确定”。</p>
+<figure data-type="image" tabindex="3"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171918.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171918" loading="lazy"></figure>
+<p>5、在弹出的“属性”对话框，点击“来源名称”右侧下拉箭头，可以显示当前发现的NDI视频源，选择一个你想要添加的视频源，其他参数可选择默认，然后点击“确定”。</p>
+<figure data-type="image" tabindex="4"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171942.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171942" loading="lazy"></figure>
+<p>6、NDI源将添加至“来源”区域，并在“预览”区域实时播放。</p>
+<figure data-type="image" tabindex="5"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171959.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171959" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ffmpeg 录制直播流信号]]></title>
         <id>https://haibing.xyz/post/ffmpeg录制直播流/</id>
@@ -116,7 +138,7 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
         <link href="https://haibing.xyz/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/">
         </link>
         <updated>2020-09-03T10:19:50.000Z</updated>
-        <content type="html"><![CDATA[<p>https://qrbtf.com/</p>
+        <content type="html"><![CDATA[<p><a href="https://qrbtf.com/">https://qrbtf.com/</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -125,7 +147,7 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
         <link href="https://haibing.xyz/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/">
         </link>
         <updated>2020-08-24T08:17:38.000Z</updated>
-        <content type="html"><![CDATA[<p>https://www.todesk.com/download.html</p>
+        <content type="html"><![CDATA[<p><a href="https://www.todesk.com/download.html">https://www.todesk.com/download.html</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -493,19 +515,5 @@ ___
  <audio id="audio" controls="" preload="none">
 <source id="mp3" src="http://qiniu.cloud.fandong.me/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3">
 </audio>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[markdown插入视频]]></title>
-        <id>https://haibing.xyz/post/markdown-cha-ru-shi-pin/</id>
-        <link href="https://haibing.xyz/post/markdown-cha-ru-shi-pin/">
-        </link>
-        <updated>2020-08-21T10:20:38.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>&lt;video id=&quot;video&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg&quot;&gt;
-&lt;source id=&quot;mp4&quot; src=&quot;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
-</code></pre>
-<video id="video" controls="" preload="none" poster="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg">
-      <source id="mp4" src="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4" type="video/mp4">
-      </video>]]></content>
     </entry>
 </feed>

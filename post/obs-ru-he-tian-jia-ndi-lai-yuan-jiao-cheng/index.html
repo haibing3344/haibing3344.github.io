@@ -8,7 +8,7 @@
 <meta name="keywords" content="海冰的静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>FFmpeg：视频转码、剪切、合并、播放速调整 | 海冰</title>
+<title>OBS如何添加NDI来源教程 | 海冰</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1602321645129">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="FFmpeg：视频转码、剪切、合并、播放速调整" />
-  <meta name="keywords" content="ffmpeg" />
+  <meta name="description" content="OBS如何添加NDI来源教程" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -190,8 +190,7 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            <div class="post-side-meta" id="post_side_meta">
-              
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -233,194 +232,6 @@
 
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li><a href="#%E8%BD%AC%E7%A0%81">转码</a></li>
-<li><a href="#%E5%89%AA%E5%88%87">剪切</a></li>
-<li><a href="#%E5%90%88%E5%B9%B6">合并</a></li>
-<li><a href="#%E8%B0%83%E6%95%B4%E6%92%AD%E6%94%BE%E9%80%9F%E5%BA%A6">调整播放速度</a></li>
-</ul>
-
-  </div>
-</div>
-
-<script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
-      }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
-    });
-  }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
           
         
       </div>
@@ -508,8 +319,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/">
-      FFmpeg：视频转码、剪切、合并、播放速调整
+    <a class="post-title-link" href="https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/">
+      OBS如何添加NDI来源教程
     </a>
   </h1>
   <div class="post-meta">
@@ -517,36 +328,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-10-05 16:21:51">2020-10-05</span>
+      <span class="publish-time" data-t="2020-10-10 16:59:43">2020-10-10</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://haibing.xyz/tag/2hO7hI4PQ/">
-        <span>ffmpeg</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>579<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>375<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/FFmpeg视频转码、剪切、合并、播放速调整/" data-flag-title="FFmpeg：视频转码、剪切、合并、播放速调整" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/" data-flag-title="OBS如何添加NDI来源教程" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -555,58 +353,20 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="转码">转码</h1>
-<p>最简单命令如下：</p>
-<pre><code>ffmpeg -i out.ogv -vcodec h264 out.mp4
-ffmpeg -i out.ogv -vcodec mpeg4 out.mp4
-ffmpeg -i out.ogv -vcodec libxvid out.mp4
-ffmpeg -i out.mp4 -vcodec wmv1 out.wmv
-ffmpeg -i out.mp4 -vcodec wmv2 out.wmv
-</code></pre>
-<!-- more -->
-<p>-i 后面是输入文件名。-vcodec 后面是编码格式，h264 最佳，但 Windows 系统默认不安装。如果是要插入 ppt 的视频，选择 wmv1 或 wmv2 基本上万无一失。</p>
-<p>附加选项：-r 指定帧率，-s 指定分辨率，-b 指定比特率；于此同时可以对声道进行转码，-acodec 指定音频编码，-ab 指定音频比特率，-ac 指定声道数，例如</p>
-<pre><code>ffmpeg -i out.ogv -s 640x480 -b 500k -vcodec h264 -r 29.97 -acodec libfaac -ab 48k -ac 2 out.mp4
-</code></pre>
-<h1 id="剪切">剪切</h1>
-<p>用 -ss 和 -t 选项， 从第 30 秒开始，向后截取 10 秒的视频，并保存：</p>
-<pre><code>ffmpeg -i input.wmv -ss 00:00:30.0 -c copy -t 00:00:10.0 output.wmv
-ffmpeg -i input.wmv -ss 30 -c copy -t 10 output.wmv
-</code></pre>
-<p>达成相同效果，也可以用 -ss 和 -to 选项， 从第 30 秒截取到第 40 秒：</p>
-<pre><code>ffmpeg -i input.wmv -ss 30 -c copy -to 40 output.wmv
-</code></pre>
-<p>值得注意的是，ffmpeg 为了加速，会使用关键帧技术， 所以有时剪切出来的结果在起止时间上未必准确。 通常来说，把 -ss 选项放在 -i 之前，会使用关键帧技术； 把 -ss 选项放在 -i 之后，则不使用关键帧技术。 如果要使用关键帧技术又要保留时间戳，可以加上 -copyts 选项：</p>
-<pre><code>ffmpeg -ss 00:18:54 -i 5G.mp4 -to 01:06:47 -c copy -copyts 5Gcut.mp4
-</code></pre>
-<p>参考：ffmpeg.org</p>
-<p>ffmpeg -i 5G.mp4 -ss 00:18:54 -to 01:06:47 -c copy  5Gcut.mp4</p>
-<h1 id="合并">合并</h1>
-<p>把两个视频文件合并成一个。</p>
-<p>简单地使用 concat demuxer，示例：</p>
-<pre><code>$ cat mylist.txt
-file '/path/to/file1'
-file '/path/to/file2'
-file '/path/to/file3'
-
-$ ffmpeg -f concat -i mylist.txt -c copy output
-</code></pre>
-<p>更多时候，由于输入文件的多样性，需要转成中间格式再合成：</p>
-<pre><code>ffmpeg -i input1.avi -qscale:v 1 intermediate1.mpg
-ffmpeg -i input2.avi -qscale:v 1 intermediate2.mpg
-cat intermediate1.mpg intermediate2.mpg &gt; intermediate_all.mpg
-ffmpeg -i intermediate_all.mpg -qscale:v 2 output.avi
-</code></pre>
-<p>参考：stackoverflow； ffmpeg.org。</p>
-<h1 id="调整播放速度">调整播放速度</h1>
-<p>加速四倍：</p>
-<pre><code>ffmpeg -i TheOrigin.mp4 -vf  &quot;setpts=0.25*PTS&quot; UpTheOrigin.mp4
-</code></pre>
-<p>四倍慢速：</p>
-<pre><code>ffmpeg -i TheOrigin.mp4 -vf  &quot;setpts=4*PTS&quot; DownTheOrigin.mp4
-</code></pre>
-<p>参考:https://fzheng.me/2016/01/08/ffmpeg/<br>
-https://blog.csdn.net/chance_yin/article/details/16118903</p>
+              <p>1、正确安装OBS软件。</p>
+<p>2、打开OBS软件，在“来源”的空闲区域点击右键，或是点击左下角位置“+”，会弹出“添加”选项，可以显示当前可添加的视频源列表，比如图像、场景、媒体源等。如果没有显示“NDI来源”一项，说明需要安装obs-ndi插件。</p>
+<figure data-type="image" tabindex="1"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/20201010171547.png" alt="" loading="lazy"></figure>
+<p>3、打开网站链接：<a href="https://github.com/Palakis/obs-ndi/releases">https://github.com/Palakis/obs-ndi/releases</a>，点击对应安装包将obs-ndi插件下载至本地，然后进行安装。</p>
+<figure data-type="image" tabindex="2"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171837.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171837" loading="lazy"></figure>
+<p>这里以WIN64位为例：</p>
+<p>解压NDI插件包后，将data文件夹下obs-plugins文件夹里的文件全部复制到OBS的同名文件夹下，将obs-plugins文件夹下64bits文件夹里的文件全部复制到OBS的同名文件夹下。启动OBS会提示缺少NewTek NDI的ndi-runtime-4.5.1-Windows.exe程序。点击链接<a href="https://ndi.palakis.fr/runtime/ndi-runtime-4.5.1-Windows.exe">https://ndi.palakis.fr/runtime/ndi-runtime-4.5.1-Windows.exe</a>下载安装。</p>
+<p>安装之后在“来源”里面添加可以看到“NDI来源”。（添加插件之后，可能需要重启程序或是电脑才能生效）</p>
+<p>4、点击“NDI来源”，针对新建NDI源设置名称，然后点击“确定”。</p>
+<figure data-type="image" tabindex="3"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171918.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171918" loading="lazy"></figure>
+<p>5、在弹出的“属性”对话框，点击“来源名称”右侧下拉箭头，可以显示当前发现的NDI视频源，选择一个你想要添加的视频源，其他参数可选择默认，然后点击“确定”。</p>
+<figure data-type="image" tabindex="4"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171942.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171942" loading="lazy"></figure>
+<p>6、NDI源将添加至“来源”区域，并在“预览”区域实时播放。</p>
+<figure data-type="image" tabindex="5"><img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171959.png" alt="obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng-2020-10-10-20201010171959" loading="lazy"></figure>
 
             </div>
             
@@ -619,7 +379,7 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/" title="FFmpeg：视频转码、剪切、合并、播放速调整">https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/</a>
+      <a href="https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/" title="OBS如何添加NDI来源教程">https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -628,21 +388,15 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
   </ul>
   <div class="tags">
     
-      <a href="https://haibing.xyz/tag/2hO7hI4PQ/"># ffmpeg</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="ffmpeg 录制直播流信号" href="https://haibing.xyz/post/ffmpeg录制直播流/">ffmpeg 录制直播流信号</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="ffmpeg 录制直播流信号" href="https://haibing.xyz/post/ffmpeg录制直播流/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="ffmpeg间隔截取视频帧" href="https://haibing.xyz/post/ffmpeg间隔截取视频帧/">ffmpeg间隔截取视频帧</a>
-        <a class="nav-mobile-next" title="ffmpeg间隔截取视频帧" href="https://haibing.xyz/post/ffmpeg间隔截取视频帧/">下一篇</a>
+        <a class="nav-pc-next" title="ffmpeg 录制直播流信号" href="https://haibing.xyz/post/ffmpeg录制直播流/">ffmpeg 录制直播流信号</a>
+        <a class="nav-mobile-next" title="ffmpeg 录制直播流信号" href="https://haibing.xyz/post/ffmpeg录制直播流/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
