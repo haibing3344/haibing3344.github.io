@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://haibing.xyz</id>
     <title>海冰</title>
-    <updated>2020-10-11T05:13:55.637Z</updated>
+    <updated>2020-10-16T04:45:39.686Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://haibing.xyz"/>
     <link rel="self" href="https://haibing.xyz/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://haibing.xyz/images/avatar.png</logo>
     <icon>https://haibing.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, 海冰</rights>
+    <entry>
+        <title type="html"><![CDATA[LinkPi编码器，支持NDI]]></title>
+        <id>https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/</id>
+        <link href="https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/">
+        </link>
+        <updated>2020-10-14T08:18:50.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://gitee.com/LinkPi/Encoder/wikis/pages/preview">https://gitee.com/LinkPi/Encoder/wikis/pages/preview</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[OBS如何添加NDI来源教程]]></title>
         <id>https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/</id>
@@ -501,19 +510,5 @@ ___
         <updated>2020-08-23T08:21:51.000Z</updated>
         <content type="html"><![CDATA[<pre><code>ffmpeg -re -i [视频地址or直播流地址] -c copy -f flv [推流地址]</code></pre>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[markdown插入音频]]></title>
-        <id>https://haibing.xyz/post/markdown-cha-ru-yin-pin/</id>
-        <link href="https://haibing.xyz/post/markdown-cha-ru-yin-pin/">
-        </link>
-        <updated>2020-08-21T10:40:48.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>&lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;
-&lt;source id=&quot;mp3&quot; src=&quot;http://qiniu.cloud.fandong.me/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3&quot;&gt;
-&lt;/audio&gt;
-</code></pre>
- <audio id="audio" controls="" preload="none">
-<source id="mp3" src="http://qiniu.cloud.fandong.me/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3">
-</audio>]]></content>
     </entry>
 </feed>
