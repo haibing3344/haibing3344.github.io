@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://haibing.xyz</id>
     <title>海冰</title>
-    <updated>2020-10-16T09:38:55.205Z</updated>
+    <updated>2020-10-17T03:44:04.565Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://haibing.xyz"/>
+    <link rel="self" href="https://haibing.xyz/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://haibing.xyz/images/avatar.png</logo>
+    <icon>https://haibing.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, 海冰</rights>
     <entry>
         <title type="html"><![CDATA[LinkPi编码器，支持NDI]]></title>
-        <id>http://localhost:4000/post/linkpi-bian-ma-qi-zhi-chi-ndi/</id>
-        <link href="http://localhost:4000/post/linkpi-bian-ma-qi-zhi-chi-ndi/">
+        <id>https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/</id>
+        <link href="https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/">
         </link>
         <updated>2020-10-14T08:18:50.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://gitee.com/LinkPi/Encoder/wikis/pages/preview">https://gitee.com/LinkPi/Encoder/wikis/pages/preview</a></p>
@@ -21,8 +21,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[OBS如何添加NDI来源教程]]></title>
-        <id>http://localhost:4000/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/</id>
-        <link href="http://localhost:4000/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/">
+        <id>https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/</id>
+        <link href="https://haibing.xyz/post/obs-ru-he-tian-jia-ndi-lai-yuan-jiao-cheng/">
         </link>
         <updated>2020-10-10T08:59:43.000Z</updated>
         <content type="html"><![CDATA[<p>1、正确安装OBS软件。</p>
@@ -43,8 +43,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[ffmpeg 录制直播流信号]]></title>
-        <id>http://localhost:4000/post/ffmpeg录制直播流/</id>
-        <link href="http://localhost:4000/post/ffmpeg录制直播流/">
+        <id>https://haibing.xyz/post/ffmpeg录制直播流/</id>
+        <link href="https://haibing.xyz/post/ffmpeg录制直播流/">
         </link>
         <updated>2020-10-05T10:21:51.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-bash">ffmpeg -i https://mobilelive-cnc-cdn.ysp.cctv.cn/ysp/E2B44C65BEA385FD28B7651233347CD4D5AC888EEDA8B8B9EE86E5C53F6B33D108F7A7B40E235942544582364B9D7B8BEF3CCF73410685F199705CCF16C2E645D6C69E08A33FDE8F87B2E4C4737A6DD9126ED29E6B703C7E152D8ECCDFF65D1F/2001891501_hd.m3u8 -c:v copy -c:a copy -bsf:a aac_adtstoasc abc.mp4
@@ -63,8 +63,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[FFmpeg：视频转码、剪切、合并、播放速调整]]></title>
-        <id>http://localhost:4000/post/FFmpeg视频转码、剪切、合并、播放速调整/</id>
-        <link href="http://localhost:4000/post/FFmpeg视频转码、剪切、合并、播放速调整/">
+        <id>https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/</id>
+        <link href="https://haibing.xyz/post/FFmpeg视频转码、剪切、合并、播放速调整/">
         </link>
         <updated>2020-10-05T08:21:51.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="转码">转码</h1>
@@ -132,8 +132,8 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[ffmpeg间隔截取视频帧]]></title>
-        <id>http://localhost:4000/post/ffmpeg间隔截取视频帧/</id>
-        <link href="http://localhost:4000/post/ffmpeg间隔截取视频帧/">
+        <id>https://haibing.xyz/post/ffmpeg间隔截取视频帧/</id>
+        <link href="https://haibing.xyz/post/ffmpeg间隔截取视频帧/">
         </link>
         <updated>2020-10-05T08:11:51.000Z</updated>
         <content type="html"><![CDATA[<pre><code>ffmpeg -i abc2.mp4 -vf fps=0.01 a/out%d.png
@@ -143,8 +143,8 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[参数化二维码生成器]]></title>
-        <id>http://localhost:4000/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/</id>
-        <link href="http://localhost:4000/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/">
+        <id>https://haibing.xyz/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/</id>
+        <link href="https://haibing.xyz/post/can-shu-hua-er-wei-ma-sheng-cheng-qi/">
         </link>
         <updated>2020-09-03T10:19:50.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://qrbtf.com/">https://qrbtf.com/</a></p>
@@ -152,8 +152,8 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[ToDesk 极致流畅的远程协助软件]]></title>
-        <id>http://localhost:4000/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/</id>
-        <link href="http://localhost:4000/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/">
+        <id>https://haibing.xyz/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/</id>
+        <link href="https://haibing.xyz/post/todesk-ji-zhi-liu-chang-de-yuan-cheng-xie-zhu-ruan-jian/">
         </link>
         <updated>2020-08-24T08:17:38.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://www.todesk.com/download.html">https://www.todesk.com/download.html</a></p>
@@ -161,8 +161,8 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Docker常用命令]]></title>
-        <id>http://localhost:4000/post/Docker常用命令/</id>
-        <link href="http://localhost:4000/post/Docker常用命令/">
+        <id>https://haibing.xyz/post/Docker常用命令/</id>
+        <link href="https://haibing.xyz/post/Docker常用命令/">
         </link>
         <updated>2020-08-23T11:21:51.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="docker-images-列出本地镜像">docker images /列出本地镜像</h1>
@@ -329,8 +329,8 @@ docker rmi -f $(docker search -qa) /删除全部镜像
     </entry>
     <entry>
         <title type="html"><![CDATA[markdown语法]]></title>
-        <id>http://localhost:4000/post/markdown语法/</id>
-        <link href="http://localhost:4000/post/markdown语法/">
+        <id>https://haibing.xyz/post/markdown语法/</id>
+        <link href="https://haibing.xyz/post/markdown语法/">
         </link>
         <updated>2020-08-23T09:21:51.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="一标题">一.标题</h2>
@@ -504,8 +504,8 @@ ___
     </entry>
     <entry>
         <title type="html"><![CDATA[ffmpeg推流]]></title>
-        <id>http://localhost:4000/post/ffmpeg-tui-liu/</id>
-        <link href="http://localhost:4000/post/ffmpeg-tui-liu/">
+        <id>https://haibing.xyz/post/ffmpeg-tui-liu/</id>
+        <link href="https://haibing.xyz/post/ffmpeg-tui-liu/">
         </link>
         <updated>2020-08-23T08:21:51.000Z</updated>
         <content type="html"><![CDATA[<pre><code>ffmpeg -re -i [视频地址or直播流地址] -c copy -f flv [推流地址]</code></pre>
