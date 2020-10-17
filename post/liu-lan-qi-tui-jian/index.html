@@ -8,7 +8,7 @@
 <meta name="keywords" content="海冰的静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>markdown插入视频 | 海冰</title>
+<title>浏览器推荐及下载地址 | 海冰</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1602946990673">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="markdown插入视频" />
-  <meta name="keywords" content="markdown" />
+  <meta name="description" content="浏览器推荐及下载地址" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -200,7 +200,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -242,6 +243,197 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8">谷歌浏览器</a></li>
+<li><a href="#%E5%BE%AE%E8%BD%AF%E6%B5%8F%E8%A7%88%E5%99%A8">微软浏览器</a></li>
+<li><a href="#%E6%AC%A7%E6%9C%8B%E6%B5%8F%E8%A7%88%E5%99%A8">欧朋浏览器</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -329,8 +521,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://haibing.xyz/post/markdown-cha-ru-shi-pin/">
-      markdown插入视频
+    <a class="post-title-link" href="https://haibing.xyz/post/liu-lan-qi-tui-jian/">
+      浏览器推荐及下载地址
     </a>
   </h1>
   <div class="post-meta">
@@ -338,22 +530,9 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-21 18:20:38">2020-08-21</span>
+      <span class="publish-time" data-t="2020-10-17 22:22:49">2020-10-17</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://haibing.xyz/tag/6pMFv_9Cr/">
-        <span>markdown</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
@@ -362,12 +541,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>59<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>55<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/markdown-cha-ru-shi-pin/" data-flag-title="markdown插入视频" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/liu-lan-qi-tui-jian/" data-flag-title="浏览器推荐及下载地址" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -376,13 +555,17 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <pre><code>&lt;video id=&quot;video&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg&quot;&gt;
-&lt;source id=&quot;mp4&quot; src=&quot;http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4&quot; type=&quot;video/mp4&quot;&gt;
-&lt;/video&gt;
-</code></pre>
-<video id="video" controls="" preload="none" poster="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg">
-      <source id="mp4" src="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4" type="video/mp4">
-      </video>
+              <h2 id="谷歌浏览器">谷歌浏览器</h2>
+<p>下载地址：<a href="https://www.google.cn/chrome/">https://www.google.cn/chrome/</a><br>
+或者<a href="https://www.google.cn/intl/zh-CN/chrome/">https://www.google.cn/intl/zh-CN/chrome/</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-35-52.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-35-52" loading="lazy"></p>
+<h2 id="微软浏览器">微软浏览器</h2>
+<p>下载地址：<a href="https://www.microsoft.com/zh-cn/edge">https://www.microsoft.com/zh-cn/edge</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-36-08.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-36-08" loading="lazy"></p>
+<h2 id="欧朋浏览器">欧朋浏览器</h2>
+<p>下载地址：<a href="https://www.opera.com/zh-cn">https://www.opera.com/zh-cn</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-37-04.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-37-04" loading="lazy"></p>
+
             </div>
             
             
@@ -394,7 +577,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://haibing.xyz/post/markdown-cha-ru-shi-pin/" title="markdown插入视频">https://haibing.xyz/post/markdown-cha-ru-shi-pin/</a>
+      <a href="https://haibing.xyz/post/liu-lan-qi-tui-jian/" title="浏览器推荐及下载地址">https://haibing.xyz/post/liu-lan-qi-tui-jian/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -403,21 +586,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://haibing.xyz/tag/6pMFv_9Cr/"># markdown</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="markdown插入音频" href="https://haibing.xyz/post/markdown-cha-ru-yin-pin/">markdown插入音频</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="markdown插入音频" href="https://haibing.xyz/post/markdown-cha-ru-yin-pin/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="使用nohup设置后台进程" href="https://haibing.xyz/post/使用nohup设置后台进程/">使用nohup设置后台进程</a>
-        <a class="nav-mobile-next" title="使用nohup设置后台进程" href="https://haibing.xyz/post/使用nohup设置后台进程/">下一篇</a>
+        <a class="nav-pc-next" title="LinkPi编码器，支持NDI" href="https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/">LinkPi编码器，支持NDI</a>
+        <a class="nav-mobile-next" title="LinkPi编码器，支持NDI" href="https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

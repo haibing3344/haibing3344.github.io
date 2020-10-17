@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://haibing.xyz</id>
     <title>海冰</title>
-    <updated>2020-10-17T09:10:19.856Z</updated>
+    <updated>2020-10-17T15:03:21.227Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://haibing.xyz"/>
     <link rel="self" href="https://haibing.xyz/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://haibing.xyz/images/avatar.png</logo>
     <icon>https://haibing.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, 海冰</rights>
+    <entry>
+        <title type="html"><![CDATA[浏览器推荐及下载地址]]></title>
+        <id>https://haibing.xyz/post/liu-lan-qi-tui-jian/</id>
+        <link href="https://haibing.xyz/post/liu-lan-qi-tui-jian/">
+        </link>
+        <updated>2020-10-17T14:22:49.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="谷歌浏览器">谷歌浏览器</h2>
+<p>下载地址：<a href="https://www.google.cn/chrome/">https://www.google.cn/chrome/</a><br>
+或者<a href="https://www.google.cn/intl/zh-CN/chrome/">https://www.google.cn/intl/zh-CN/chrome/</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-35-52.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-35-52" loading="lazy"></p>
+<h2 id="微软浏览器">微软浏览器</h2>
+<p>下载地址：<a href="https://www.microsoft.com/zh-cn/edge">https://www.microsoft.com/zh-cn/edge</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-36-08.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-36-08" loading="lazy"></p>
+<h2 id="欧朋浏览器">欧朋浏览器</h2>
+<p>下载地址：<a href="https://www.opera.com/zh-cn">https://www.opera.com/zh-cn</a><br>
+<img src="https://images5doc.oss-cn-beijing.aliyuncs.com/images/liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-37-04.png" alt="liu-lan-qi-tui-jian-2020-10-17-Snipaste_2020-10-17_22-37-04" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LinkPi编码器，支持NDI]]></title>
         <id>https://haibing.xyz/post/linkpi-bian-ma-qi-zhi-chi-ndi/</id>
@@ -500,15 +518,6 @@ ___
 <p>-   减号</p>
 <p>.   英文句点</p>
 <p>!   感叹号</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ffmpeg推流]]></title>
-        <id>https://haibing.xyz/post/ffmpeg-tui-liu/</id>
-        <link href="https://haibing.xyz/post/ffmpeg-tui-liu/">
-        </link>
-        <updated>2020-08-23T08:21:51.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>ffmpeg -re -i [视频地址or直播流地址] -c copy -f flv [推流地址]</code></pre>
 ]]></content>
     </entry>
 </feed>
