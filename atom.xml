@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://haibing.xyz</id>
     <title>海冰</title>
-    <updated>2020-10-20T03:06:29.382Z</updated>
+    <updated>2020-11-11T07:38:24.476Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://haibing.xyz"/>
     <link rel="self" href="https://haibing.xyz/atom.xml"/>
@@ -10,6 +10,27 @@
     <logo>https://haibing.xyz/images/avatar.png</logo>
     <icon>https://haibing.xyz/favicon.ico</icon>
     <rights>All rights reserved 2020, 海冰</rights>
+    <entry>
+        <title type="html"><![CDATA[FRP 简单、高效的内网穿透工具]]></title>
+        <id>https://haibing.xyz/post/frp-jian-dan-gao-xiao-de-nei-wang-chuan-tou-gong-ju/</id>
+        <link href="https://haibing.xyz/post/frp-jian-dan-gao-xiao-de-nei-wang-chuan-tou-gong-ju/">
+        </link>
+        <updated>2020-11-11T07:37:28.000Z</updated>
+        <content type="html"><![CDATA[<p>https://gofrp.org/</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[lede路由器挂载nas目录]]></title>
+        <id>https://haibing.xyz/post/lede-lu-you-qi-gua-zai-nas-mu-lu/</id>
+        <link href="https://haibing.xyz/post/lede-lu-you-qi-gua-zai-nas-mu-lu/">
+        </link>
+        <updated>2020-11-03T16:24:43.000Z</updated>
+        <content type="html"><![CDATA[<p>基础环境</p>
+<p>黑群晖nas里面装了lede虚拟机，现在要通过lede的百度网盘插件下载网盘里面的内容到nas里面。</p>
+<p>需要将nas共享目录挂载到lede路由器。</p>
+<p>https://www.zxmvps.com/archives/3355</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[浏览器推荐及下载地址]]></title>
         <id>https://haibing.xyz/post/liu-lan-qi-tui-jian/</id>
@@ -187,349 +208,6 @@ https://blog.csdn.net/chance_yin/article/details/16118903</p>
         </link>
         <updated>2020-08-24T08:17:38.000Z</updated>
         <content type="html"><![CDATA[<p><a href="https://www.todesk.com/download.html">https://www.todesk.com/download.html</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docker常用命令]]></title>
-        <id>https://haibing.xyz/post/Docker常用命令/</id>
-        <link href="https://haibing.xyz/post/Docker常用命令/">
-        </link>
-        <updated>2020-08-23T11:21:51.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="docker-images-列出本地镜像">docker images /列出本地镜像</h1>
-<pre><code class="language-bash">docker images -a
-docker images -q
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker images
-    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-    ubuntu              latest              a2a15febcdf3        2 months ago        64.2MB
-    ubuntu              14.04               2c5e00d77a67        5 months ago        188MB
-</code></pre>
-<h1 id="docker-search-搜索镜像">docker search /搜索镜像</h1>
-<pre><code class="language-bash">docker search tomcat
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker search tomcat
-    NAME                          DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-    tomcat                        Apache Tomcat is an open source implementati…   2540                [OK]
-    tomee                         Apache TomEE is an all-Apache Java EE certif…   69                  [OK]
-    dordoka/tomcat                Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 base…   53                                      [OK]
-    bitnami/tomcat                Bitnami Tomcat Docker Image                     29                                      [OK]
-    kubeguide/tomcat-app          Tomcat image for Chapter 1                      27
-    consol/tomcat-7.0             Tomcat 7.0.57, 8080, &quot;admin/admin&quot;              16                                      [OK]
-    cloudesire/tomcat             Tomcat server, 6/7/8                            15                                      [OK]
-    aallam/tomcat-mysql           Debian, Oracle JDK, Tomcat &amp; MySQL              11                                      [OK]
-    arm32v7/tomcat                Apache Tomcat is an open source implementati…   9
-    rightctrl/tomcat              CentOS , Oracle Java, tomcat application ssl…   5                                       [OK]
-    maluuba/tomcat7-java8         Tomcat7 with java8.                             4
-    unidata/tomcat-docker         Security-hardened Tomcat Docker container.      4                                       [OK]
-    amd64/tomcat                  Apache Tomcat is an open source implementati…   2
-    arm64v8/tomcat                Apache Tomcat is an open source implementati…   2
-    i386/tomcat                   Apache Tomcat is an open source implementati…   1
-    camptocamp/tomcat-logback     Docker image for tomcat with logback integra…   1                                       [OK]
-    99taxis/tomcat7               Tomcat7                                         1                                       [OK]
-    oobsri/tomcat8                Testing CI Jobs with different names.           1
-    ppc64le/tomcat                Apache Tomcat is an open source implementati…   1
-    secoresearch/tomcat-varnish   Tomcat and Varnish 5.0                          0                                       [OK]
-    appsvc/tomcat                                                                 0
-    picoded/tomcat7               tomcat7 with jre8 and MANAGER_USER / MANAGER…   0                                       [OK]
-    cfje/tomcat-resource          Tomcat Concourse Resource                       0
-    jelastic/tomcat               An image of the Tomcat Java application serv…   0
-    s390x/tomcat                  Apache Tomcat is an open source implementati…   0
-</code></pre>
-<h1 id="docker-pull-拉取镜像">docker pull /拉取镜像</h1>
-<pre><code class="language-bash">docker pull nginx
-</code></pre>
-<h1 id="docker-rmi-删除镜像">docker rmi /删除镜像</h1>
-<pre><code class="language-bash">docker rmi -f 镜像ID  /删除指定镜像
-docker rmi -f $(docker search -qa) /删除全部镜像
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="docker-images-列出本地镜像">docker images /列出本地镜像</h1>
-<pre><code class="language-bash">docker images -a
-docker images -q
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker images
-    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-    ubuntu              latest              a2a15febcdf3        2 months ago        64.2MB
-    ubuntu              14.04               2c5e00d77a67        5 months ago        188MB
-</code></pre>
-<h1 id="docker-search-搜索镜像">docker search /搜索镜像</h1>
-<pre><code class="language-bash">docker search tomcat
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker search tomcat
-    NAME                          DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-    tomcat                        Apache Tomcat is an open source implementati…   2540                [OK]
-    tomee                         Apache TomEE is an all-Apache Java EE certif…   69                  [OK]
-    dordoka/tomcat                Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 base…   53                                      [OK]
-    bitnami/tomcat                Bitnami Tomcat Docker Image                     29                                      [OK]
-    kubeguide/tomcat-app          Tomcat image for Chapter 1                      27
-    consol/tomcat-7.0             Tomcat 7.0.57, 8080, &quot;admin/admin&quot;              16                                      [OK]
-    cloudesire/tomcat             Tomcat server, 6/7/8                            15                                      [OK]
-    aallam/tomcat-mysql           Debian, Oracle JDK, Tomcat &amp; MySQL              11                                      [OK]
-    arm32v7/tomcat                Apache Tomcat is an open source implementati…   9
-    rightctrl/tomcat              CentOS , Oracle Java, tomcat application ssl…   5                                       [OK]
-    maluuba/tomcat7-java8         Tomcat7 with java8.                             4
-    unidata/tomcat-docker         Security-hardened Tomcat Docker container.      4                                       [OK]
-    amd64/tomcat                  Apache Tomcat is an open source implementati…   2
-    arm64v8/tomcat                Apache Tomcat is an open source implementati…   2
-    i386/tomcat                   Apache Tomcat is an open source implementati…   1
-    camptocamp/tomcat-logback     Docker image for tomcat with logback integra…   1                                       [OK]
-    99taxis/tomcat7               Tomcat7                                         1                                       [OK]
-    oobsri/tomcat8                Testing CI Jobs with different names.           1
-    ppc64le/tomcat                Apache Tomcat is an open source implementati…   1
-    secoresearch/tomcat-varnish   Tomcat and Varnish 5.0                          0                                       [OK]
-    appsvc/tomcat                                                                 0
-    picoded/tomcat7               tomcat7 with jre8 and MANAGER_USER / MANAGER…   0                                       [OK]
-    cfje/tomcat-resource          Tomcat Concourse Resource                       0
-    jelastic/tomcat               An image of the Tomcat Java application serv…   0
-    s390x/tomcat                  Apache Tomcat is an open source implementati…   0
-</code></pre>
-<h1 id="docker-pull-拉取镜像">docker pull /拉取镜像</h1>
-<pre><code class="language-bash">docker pull nginx
-</code></pre>
-<h1 id="docker-rmi-删除镜像">docker rmi /删除镜像</h1>
-<pre><code class="language-bash">docker rmi -f 镜像ID  /删除指定镜像
-docker rmi -f $(docker search -qa) /删除全部镜像
-</code></pre>
-<!-- more -->
-<h1 id="启动容器">启动容器</h1>
-<pre><code class="language-bash">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-</code></pre>
-<h3 id="启动交付式容器">启动交付式容器</h3>
-<p>-t 打开容器终端</p>
-<p>-i  保持终端打开</p>
-<pre><code class="language-bash">docker run -it --name  xx image
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker run -it a2a15febcdf3
-    root@fe809bbcb339:/# ls
-    bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-</code></pre>
-<h3 id="列出正在运行的容器">列出正在运行的容器</h3>
-<pre><code class="language-bash">docker ps [OPTIONS]
-</code></pre>
-<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker ps
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-    fe809bbcb339        a2a15febcdf3        &quot;/bin/bash&quot;         51 seconds ago      Up 50 seconds                           funny_cartwright
-    HB-MacBook-Pro:~ apple$ docker ps -a
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS                   NAMES
-    fe809bbcb339        a2a15febcdf3        &quot;/bin/bash&quot;         5 minutes  ago       Exited (0) 39 seconds ago                           funny_cartwright
-    9c93d87999d0        ubuntu              &quot;/bin/bash&quot;         44 minutes ago      Exited (0) 44 minutes ago                           eloquent_banach
-    03362b0a0589        ubuntu              &quot;/bin/bash&quot;         8 weeks ago         Exited (255) 4 weeks ago    0.0.0.0:32769-&gt;80/tcp   nginx
-    HB-MacBook-Pro:~ apple$ docker ps -l
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
-    fe809bbcb339        a2a15febcdf3        &quot;/bin/bash&quot;         5 minutes ago       Exited (0) 50 seconds ago                       funny_cartwright
-</code></pre>
-<h1 id="退出容器">退出容器</h1>
-<pre><code class="language-bash">    exit 容器停止退出
-    ctrl+P+Q 容器不停止退出
-</code></pre>
-<h1 id="启动容器-2">启动容器</h1>
-<pre><code class="language-bash">    docker start 容器ID或容器名
-</code></pre>
-<h1 id="重启容器">重启容器</h1>
-<pre><code class="language-bash">    docker restart 容器ID或容器名
-</code></pre>
-<h1 id="停止容器">停止容器</h1>
-<pre><code class="language-bash">    docker stop  容器ID或者容器名
-    docker kill 容器ID或者容器名 /强制停止
-</code></pre>
-<h1 id="删除已停止容器">删除已停止容器</h1>
-<pre><code class="language-bash">    docker rm 容器ID
-</code></pre>
-<h1 id="守护式进程启动容器">守护式进程启动容器</h1>
-<pre><code class="language-bash">    docker run -d 镜像名或者镜像ID
-</code></pre>
-<p>后台运行必须有前台进程。</p>
-<h1 id="查看容器日志">查看容器日志</h1>
-<pre><code class="language-bash">    docker logs -f -t --tail 容器ID
-</code></pre>
-<h1 id="查看容器内运行的进程">查看容器内运行的进程</h1>
-<pre><code class="language-bash">    docker top 容器ID
-</code></pre>
-<h1 id="查看容器内部细节">查看容器内部细节</h1>
-<pre><code class="language-bash">    docker inspect 容器ID
-</code></pre>
-<h1 id="重新进入正在运行的容器并交互">重新进入正在运行的容器并交互</h1>
-<pre><code class="language-bash">    docker attach 容器ID  /重新进入不启动新的进程
-    docker exec -it 容器ID bashShell  /重新进入并启动新的进程
-</code></pre>
-<h1 id="拷贝容器内文件到宿主机">拷贝容器内文件到宿主机</h1>
-<pre><code class="language-bash">    docker cp 容器ID:容器目录 宿主机目录
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[markdown语法]]></title>
-        <id>https://haibing.xyz/post/markdown语法/</id>
-        <link href="https://haibing.xyz/post/markdown语法/">
-        </link>
-        <updated>2020-08-23T09:21:51.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="一标题">一.标题</h2>
-<h3 id="1-使用-和-标记">1. 使用 = 和 - 标记</h3>
-<pre><code>一级标题
-===
-
-二级标题
----
-</code></pre>
-<p>示例：</p>
-<h1 id="一级标题">一级标题</h1>
-<h2 id="二级标题">二级标题</h2>
-<h3 id="2-使用-标记">2. 使用 # 标记</h3>
-<pre><code># 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="一标题">一.标题</h2>
-<h3 id="1-使用-和-标记">1. 使用 = 和 - 标记</h3>
-<pre><code>一级标题
-===
-
-二级标题
----
-</code></pre>
-<p>示例：</p>
-<h1 id="一级标题">一级标题</h1>
-<h2 id="二级标题">二级标题</h2>
-<h3 id="2-使用-标记">2. 使用 # 标记</h3>
-<pre><code># 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题
-</code></pre>
-<!-- more -->
-<p>示例：</p>
-<h1 id="一级标题-2">一级标题</h1>
-<h2 id="二级标题-2">二级标题</h2>
-<h1 id="二-段落格式">二. 段落格式</h1>
-<h2 id="换行">换行</h2>
-<p>两个以上空格加上回车<br>
-或者空行表示另起一段</p>
-<h2 id="字体">字体</h2>
-<pre><code>*斜体*
-_斜体_
-**粗体**
-***粗斜体***
-~~删除线~~
-</code></pre>
-<p>示例：<br>
-<em>斜体</em><br>
-<strong>粗体</strong><br>
-<em><strong>粗斜体</strong></em><br>
-<s>删除线</s></p>
-<h1 id="三-分割线">三. 分割线</h1>
-<p>三个以上的星号、减号、底线建立分割线</p>
-<pre><code>---
-***
-___
-</code></pre>
-<hr>
-<h1 id="四-列表">四. 列表</h1>
-<p>无序列表使用星号、加好、减号建立。</p>
-<pre><code>* 第一项
-+ 第二项
-- 第三项
-</code></pre>
-<p>示例：</p>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<p>有序列表使用数字加上.号建立。</p>
-<pre><code>1. 第一项
-2. 第二项
-</code></pre>
-<p>示例：</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
-<h1 id="五-区块">五. 区块</h1>
-<p>使用 &gt; 号建立区块。</p>
-<pre><code>   &gt; 区块
-   &gt; 区块第二行
-</code></pre>
-<p>示例：</p>
-<blockquote>
-<p>区块<br>
-区块第二行</p>
-</blockquote>
-<h1 id="六-代码">六. 代码</h1>
-<p>使用四个空格，或者两个制表符。</p>
-<pre><code>    代码
-</code></pre>
-<p>或者</p>
-<pre><code>  ``````
-  daima
-  ``````
-</code></pre>
-<p>示例：</p>
-<pre><code>daima
-</code></pre>
-<h1 id="七-图片">七. 图片</h1>
-<pre><code>![alt 属性文本](图片地址)
-![alt 属性文本](图片地址 &quot;可选标题&quot;)
-</code></pre>
-<ul>
-<li>开头一个感叹号 !</li>
-<li>接着一个方括号，里面放上图片的替代文字</li>
-<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 'title' 属性的文字。</li>
-</ul>
-<p>示例：<br>
-<img src="https://i.loli.net/2019/10/19/O5LIAHqDNoYt9uJ.png" alt="图片示例" loading="lazy"></p>
-<h1 id="八-表格">八. 表格</h1>
-<pre><code> |  表头  | 表头  |
- | ------  |  ------ |
- | 单元格 | 单元格 |
- | 单元格 | 单元格 |
-</code></pre>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody>
-</table>
-<h1 id="九-链接">九. 链接</h1>
-<pre><code>[链接文字](链接地址) 或者 &lt;http://www.baidu.com&gt;
-</code></pre>
-<p>示例:<br>
-<a href="http:www.baidu.com">百度</a><br>
-<a href="http://www.baidu.com">http://www.baidu.com</a></p>
-<h1 id="十-转义">十. 转义</h1>
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-<p>\   反斜杠</p>
-<p>`   反引号</p>
-<p>*   星号</p>
-<p>_   下划线</p>
-<p>{}  花括号</p>
-<p>[]  方括号</p>
-<p>()  小括号</p>
-<p>#   井字号</p>
-<p>+   加号</p>
-<p>-   减号</p>
-<p>.   英文句点</p>
-<p>!   感叹号</p>
 ]]></content>
     </entry>
 </feed>

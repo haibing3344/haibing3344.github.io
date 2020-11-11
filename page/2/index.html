@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>海冰</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1603163147675">
+<link rel="shortcut icon" href="/favicon.ico?v=1605080299661">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -200,7 +200,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">15</span>
+        <span class="site-item-stat-count">17</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -243,6 +243,201 @@
         <div class="section-box pisces">
           <section class="section bg-color posts-expand slide-down-in">
             
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://haibing.xyz/post/Docker常用命令/">
+      Docker常用命令
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-08-23 19:21:51">2020-08-23</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://haibing.xyz/tag/ND-ER6FBi/">
+        <span>Docker</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>781<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <h1 id="docker-images-列出本地镜像">docker images /列出本地镜像</h1>
+<pre><code class="language-bash">docker images -a
+docker images -q
+</code></pre>
+<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    ubuntu              latest              a2a15febcdf3        2 months ago        64.2MB
+    ubuntu              14.04               2c5e00d77a67        5 months ago        188MB
+</code></pre>
+<h1 id="docker-search-搜索镜像">docker search /搜索镜像</h1>
+<pre><code class="language-bash">docker search tomcat
+</code></pre>
+<pre><code class="language-bash">    HB-MacBook-Pro:~ apple$ docker search tomcat
+    NAME                          DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+    tomcat                        Apache Tomcat is an open source implementati…   2540                [OK]
+    tomee                         Apache TomEE is an all-Apache Java EE certif…   69                  [OK]
+    dordoka/tomcat                Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 base…   53                                      [OK]
+    bitnami/tomcat                Bitnami Tomcat Docker Image                     29                                      [OK]
+    kubeguide/tomcat-app          Tomcat image for Chapter 1                      27
+    consol/tomcat-7.0             Tomcat 7.0.57, 8080, &quot;admin/admin&quot;              16                                      [OK]
+    cloudesire/tomcat             Tomcat server, 6/7/8                            15                                      [OK]
+    aallam/tomcat-mysql           Debian, Oracle JDK, Tomcat &amp; MySQL              11                                      [OK]
+    arm32v7/tomcat                Apache Tomcat is an open source implementati…   9
+    rightctrl/tomcat              CentOS , Oracle Java, tomcat application ssl…   5                                       [OK]
+    maluuba/tomcat7-java8         Tomcat7 with java8.                             4
+    unidata/tomcat-docker         Security-hardened Tomcat Docker container.      4                                       [OK]
+    amd64/tomcat                  Apache Tomcat is an open source implementati…   2
+    arm64v8/tomcat                Apache Tomcat is an open source implementati…   2
+    i386/tomcat                   Apache Tomcat is an open source implementati…   1
+    camptocamp/tomcat-logback     Docker image for tomcat with logback integra…   1                                       [OK]
+    99taxis/tomcat7               Tomcat7                                         1                                       [OK]
+    oobsri/tomcat8                Testing CI Jobs with different names.           1
+    ppc64le/tomcat                Apache Tomcat is an open source implementati…   1
+    secoresearch/tomcat-varnish   Tomcat and Varnish 5.0                          0                                       [OK]
+    appsvc/tomcat                                                                 0
+    picoded/tomcat7               tomcat7 with jre8 and MANAGER_USER / MANAGER…   0                                       [OK]
+    cfje/tomcat-resource          Tomcat Concourse Resource                       0
+    jelastic/tomcat               An image of the Tomcat Java application serv…   0
+    s390x/tomcat                  Apache Tomcat is an open source implementati…   0
+</code></pre>
+<h1 id="docker-pull-拉取镜像">docker pull /拉取镜像</h1>
+<pre><code class="language-bash">docker pull nginx
+</code></pre>
+<h1 id="docker-rmi-删除镜像">docker rmi /删除镜像</h1>
+<pre><code class="language-bash">docker rmi -f 镜像ID  /删除指定镜像
+docker rmi -f $(docker search -qa) /删除全部镜像
+</code></pre>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://haibing.xyz/post/Docker常用命令/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://haibing.xyz/post/markdown语法/">
+      markdown语法
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-08-23 17:21:51">2020-08-23</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://haibing.xyz/tag/6pMFv_9Cr/">
+        <span>markdown</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>490<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <h2 id="一标题">一.标题</h2>
+<h3 id="1-使用-和-标记">1. 使用 = 和 - 标记</h3>
+<pre><code>一级标题
+===
+
+二级标题
+---
+</code></pre>
+<p>示例：</p>
+<h1 id="一级标题">一级标题</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="2-使用-标记">2. 使用 # 标记</h3>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题</code></pre>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://haibing.xyz/post/markdown语法/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
   <article class="post-list-box  post box-shadow-wrapper">
     <div class="article-wrapper bg-color">
       <section class="post-header">
@@ -1486,6 +1681,21 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/frp-jian-dan-gao-xiao-de-nei-wang-chuan-tou-gong-ju/"" data-c="
+          &lt;p&gt;https://gofrp.org/&lt;/p&gt;
+">FRP 简单、高效的内网穿透工具</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/lede-lu-you-qi-gua-zai-nas-mu-lu/"" data-c="
+          &lt;p&gt;基础环境&lt;/p&gt;
+&lt;p&gt;黑群晖nas里面装了lede虚拟机，现在要通过lede的百度网盘插件下载网盘里面的内容到nas里面。&lt;/p&gt;
+&lt;p&gt;需要将nas共享目录挂载到lede路由器。&lt;/p&gt;
+&lt;p&gt;https://www.zxmvps.com/archives/3355&lt;/p&gt;
+">lede路由器挂载nas目录</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://haibing.xyz/post/liu-lan-qi-tui-jian/"" data-c="
