@@ -8,7 +8,7 @@
 <meta name="keywords" content="海冰的静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>markdown插入音频 | 海冰</title>
+<title>Docker笔记 | 海冰</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1616334685231">
 <link rel="stylesheet" href="/media/css/pisces.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -48,8 +48,8 @@
 
 
 
-  <meta name="description" content="markdown插入音频" />
-  <meta name="keywords" content="markdown" />
+  <meta name="description" content="Docker笔记" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -200,7 +200,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -242,6 +243,239 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#docker-%E5%AE%89%E8%A3%85">docker 安装</a>
+<ul>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%9F%A5%E7%9C%8B">环境查看</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC">查看系统版本</a></li>
+<li><a href="#%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%89%88%E6%9C%AC">卸载旧版本</a></li>
+<li><a href="#%E9%9C%80%E8%A6%81%E7%9A%84%E5%AE%89%E8%A3%85%E5%8C%85">需要的安装包</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93">设置镜像仓库</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E6%BA%90">更新源</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85docker%E7%9B%B8%E5%85%B3%E7%9A%84%E8%BD%AF%E4%BB%B6">安装docker相关的软件</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8docker%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC">启动docker,查看版本</a></li>
+<li><a href="#hello-word">Hello Word</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%95%9C%E5%83%8F">查看下载的镜像</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8D%B8%E8%BD%BDdocker">卸载docker</a></li>
+<li><a href="#%E8%85%BE%E8%AE%AF%E4%BA%91-%E6%9B%B4%E6%8D%A2docker%E6%BA%90">腾讯云 更换docker源</a></li>
+<li><a href="#docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">docker常用命令</a></li>
+<li><a href="#%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4">镜像命令</a>
+<ul>
+<li><a href="#docker-images-%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E4%B8%BB%E6%9C%BA%E4%B8%8A%E7%9A%84%E6%89%80%E6%9C%89%E9%95%9C%E5%83%8F">docker images 查看本地主机上的所有镜像</a></li>
+<li><a href="#docker-search-%E6%90%9C%E7%B4%A2%E9%95%9C%E5%83%8F">docker search 搜索镜像</a></li>
+<li><a href="#docker-pull-%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F">docker pull 下载镜像</a></li>
+<li><a href="#docker-rmi-%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F">docker rmi 删除镜像</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4">容器命令</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F">下载拉取镜像</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BA%E5%AE%B9%E5%99%A8%E5%B9%B6%E5%90%AF%E5%8A%A8">新建容器并启动</a></li>
+<li><a href="#%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8">列出所有运行的容器</a></li>
+<li><a href="#%E9%80%80%E5%87%BA%E5%AE%B9%E5%99%A8">退出容器</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8">删除容器</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E5%92%8C%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8%E7%9A%84%E6%93%8D%E4%BD%9C">启动和停止容器的操作</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E5%AE%83%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">其它常用命令</a>
+<ul>
+<li><a href="#%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8">后台启动容器</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97">查看日志</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF">查看容器中的进程信息</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF">查看容器信息</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A5%E5%BD%93%E5%89%8D%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8">进入当前正在运行的容器</a></li>
+<li><a href="#%E4%BB%8E%E5%AE%B9%E5%99%A8%E5%86%85%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%88%B0%E4%B8%BB%E6%9C%BA">从容器内拷贝文件到主机</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -329,8 +563,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://haibing.xyz/post/markdown-cha-ru-yin-pin/">
-      markdown插入音频
+    <a class="post-title-link" href="https://haibing.xyz/post/docker-bi-ji/">
+      Docker笔记
     </a>
   </h1>
   <div class="post-meta">
@@ -338,36 +572,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-21 18:40:48">2020-08-21</span>
+      <span class="publish-time" data-t="2021-03-21 21:33:38">2021-03-21</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://haibing.xyz/tag/6pMFv_9Cr/">
-        <span>markdown</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>29<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>51<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>5170<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/markdown-cha-ru-yin-pin/" data-flag-title="markdown插入音频" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/docker-bi-ji/" data-flag-title="Docker笔记" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -376,13 +597,749 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <pre><code>&lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;
-&lt;source id=&quot;mp3&quot; src=&quot;http://qiniu.cloud.fandong.me/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3&quot;&gt;
-&lt;/audio&gt;
+              <h2 id="docker-安装">docker 安装</h2>
+<h3 id="环境查看">环境查看</h3>
+<pre><code class="language-shell"># 系统内核3.10以上
+[root@VM-0-2-centos ~]# uname -r
+3.10.0-1127.19.1.el7.x86_64
 </code></pre>
- <audio id="audio" controls="" preload="none">
-<source id="mp3" src="http://qiniu.cloud.fandong.me/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3">
-</audio>
+<h3 id="查看系统版本">查看系统版本</h3>
+<pre><code class="language-shell"># 系统版本
+[root@VM-0-2-centos ~]# cat /etc/os-release
+NAME=&quot;CentOS Linux&quot;
+VERSION=&quot;7 (Core)&quot;
+ID=&quot;centos&quot;
+ID_LIKE=&quot;rhel fedora&quot;
+VERSION_ID=&quot;7&quot;
+PRETTY_NAME=&quot;CentOS Linux 7 (Core)&quot;
+ANSI_COLOR=&quot;0;31&quot;
+CPE_NAME=&quot;cpe:/o:centos:centos:7&quot;
+HOME_URL=&quot;https://www.centos.org/&quot;
+BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;
+
+CENTOS_MANTISBT_PROJECT=&quot;CentOS-7&quot;
+CENTOS_MANTISBT_PROJECT_VERSION=&quot;7&quot;
+REDHAT_SUPPORT_PRODUCT=&quot;centos&quot;
+REDHAT_SUPPORT_PRODUCT_VERSION=&quot;7&quot;
+</code></pre>
+<h3 id="卸载旧版本">卸载旧版本</h3>
+<pre><code class="language-shell">yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+</code></pre>
+<h3 id="需要的安装包">需要的安装包</h3>
+<pre><code class="language-shell">yum install -y yum-utils
+</code></pre>
+<h3 id="设置镜像仓库">设置镜像仓库</h3>
+<pre><code class="language-shell">sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre>
+<h3 id="更新源">更新源</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# yum makecache fast
+已加载插件：fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+epel                                                     | 4.7 kB     00:00
+extras                                                   | 2.9 kB     00:00
+os                                                       | 3.6 kB     00:00
+updates                                                  | 2.9 kB     00:00
+元数据缓存已建立
+</code></pre>
+<h3 id="安装docker相关的软件">安装docker相关的软件</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# yum install docker-ce docker-ce-cli containerd.io
+已加载插件：fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+没有可用软件包 docker-ce。
+没有可用软件包 docker-ce-cli。
+没有可用软件包 containerd.io。
+错误：无须任何处理
+[root@VM-0-2-centos ~]# ls
+frp0341
+[root@VM-0-2-centos ~]# yum-config-manager \
+&gt;     --add-repo \
+&gt;     https://download.docker.com/linux/centos/docker-ce.repo
+已加载插件：fastestmirror, langpacks
+adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+grabbing file https://download.docker.com/linux/centos/docker-ce.repo to /etc/yum.repos.d/docker-ce.repo
+repo saved to /etc/yum.repos.d/docker-ce.repo
+[root@VM-0-2-centos ~]# yum install docker-ce docker-ce-cli containerd.io
+已加载插件：fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+docker-ce-stable                                         | 3.5 kB     00:00
+(1/2): docker-ce-stable/7/x86_64/primary_db                |  58 kB   00:00
+(2/2): docker-ce-stable/7/x86_64/updateinfo                |   55 B   00:00
+正在解决依赖关系
+--&gt; 正在检查事务
+---&gt; 软件包 containerd.io.x86_64.0.1.4.4-3.1.el7 将被 安装
+--&gt; 正在处理依赖关系 container-selinux &gt;= 2:2.74，它被软件包 containerd.io-1.4.4-3.1.el7.x86_64 需要
+---&gt; 软件包 docker-ce.x86_64.3.20.10.5-3.el7 将被 安装
+--&gt; 正在处理依赖关系 docker-ce-rootless-extras，它被软件包 3:docker-ce-20.10.5-3.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libcgroup，它被软件包 3:docker-ce-20.10.5-3.el7.x86_64 需要
+---&gt; 软件包 docker-ce-cli.x86_64.1.20.10.5-3.el7 将被 安装
+--&gt; 正在检查事务
+---&gt; 软件包 container-selinux.noarch.2.2.119.2-1.911c772.el7_8 将被 安装
+--&gt; 正在处理依赖关系 policycoreutils-python，它被软件包 2:container-selinux-2.119.2-1.911c772.el7_8.noarch 需要
+---&gt; 软件包 docker-ce-rootless-extras.x86_64.0.20.10.5-3.el7 将被 安装
+--&gt; 正在处理依赖关系 fuse-overlayfs &gt;= 0.7，它被软件包 docker-ce-rootless-extras-20.10.5-3.el7.x86_64 需要
+--&gt; 正在处理依赖关系 slirp4netns &gt;= 0.4，它被软件包 docker-ce-rootless-extras-20.10.5-3.el7.x86_64 需要
+---&gt; 软件包 libcgroup.x86_64.0.0.41-21.el7 将被 安装
+--&gt; 正在检查事务
+---&gt; 软件包 fuse-overlayfs.x86_64.0.0.7.2-6.el7_8 将被 安装
+--&gt; 正在处理依赖关系 libfuse3.so.3(FUSE_3.2)(64bit)，它被软件包 fuse-overlayfs-0.7.2-6.el7_8.x86_64 需要
+--&gt; 正在处理依赖关系 libfuse3.so.3(FUSE_3.0)(64bit)，它被软件包 fuse-overlayfs-0.7.2-6.el7_8.x86_64 需要
+--&gt; 正在处理依赖关系 libfuse3.so.3()(64bit)，它被软件包 fuse-overlayfs-0.7.2-6.el7_8.x86_64 需要
+---&gt; 软件包 policycoreutils-python.x86_64.0.2.5-34.el7 将被 安装
+--&gt; 正在处理依赖关系 setools-libs &gt;= 3.3.8-4，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libsemanage-python &gt;= 2.5-14，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 audit-libs-python &gt;= 2.1.3-4，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 python-IPy，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libqpol.so.1(VERS_1.4)(64bit)，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libqpol.so.1(VERS_1.2)(64bit)，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libapol.so.4(VERS_4.0)(64bit)，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 checkpolicy，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libqpol.so.1()(64bit)，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+--&gt; 正在处理依赖关系 libapol.so.4()(64bit)，它被软件包 policycoreutils-python-2.5-34.el7.x86_64 需要
+---&gt; 软件包 slirp4netns.x86_64.0.0.4.3-4.el7_8 将被 安装
+--&gt; 正在检查事务
+---&gt; 软件包 audit-libs-python.x86_64.0.2.8.5-4.el7 将被 安装
+---&gt; 软件包 checkpolicy.x86_64.0.2.5-8.el7 将被 安装
+---&gt; 软件包 fuse3-libs.x86_64.0.3.6.1-4.el7 将被 安装
+---&gt; 软件包 libsemanage-python.x86_64.0.2.5-14.el7 将被 安装
+---&gt; 软件包 python-IPy.noarch.0.0.75-6.el7 将被 安装
+---&gt; 软件包 setools-libs.x86_64.0.3.3.8-4.el7 将被 安装
+--&gt; 解决依赖关系完成
+
+依赖关系解决
+
+================================================================================
+ Package                架构   版本                      源                大小
+================================================================================
+正在安装:
+ containerd.io          x86_64 1.4.4-3.1.el7             docker-ce-stable  33 M
+ docker-ce              x86_64 3:20.10.5-3.el7           docker-ce-stable  27 M
+ docker-ce-cli          x86_64 1:20.10.5-3.el7           docker-ce-stable  33 M
+为依赖而安装:
+ audit-libs-python      x86_64 2.8.5-4.el7               os                76 k
+ checkpolicy            x86_64 2.5-8.el7                 os               295 k
+ container-selinux      noarch 2:2.119.2-1.911c772.el7_8 extras            40 k
+ docker-ce-rootless-extras
+                        x86_64 20.10.5-3.el7             docker-ce-stable 9.1 M
+ fuse-overlayfs         x86_64 0.7.2-6.el7_8             extras            54 k
+ fuse3-libs             x86_64 3.6.1-4.el7               extras            82 k
+ libcgroup              x86_64 0.41-21.el7               os                66 k
+ libsemanage-python     x86_64 2.5-14.el7                os               113 k
+ policycoreutils-python x86_64 2.5-34.el7                os               457 k
+ python-IPy             noarch 0.75-6.el7                os                32 k
+ setools-libs           x86_64 3.3.8-4.el7               os               620 k
+ slirp4netns            x86_64 0.4.3-4.el7_8             extras            81 k
+
+事务概要
+================================================================================
+安装  3 软件包 (+12 依赖软件包)
+
+总下载量：104 M
+安装大小：430 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/15): container-selinux-2.119.2-1.911c772.el7_8.noarch.r |  40 kB   00:00
+(2/15): audit-libs-python-2.8.5-4.el7.x86_64.rpm           |  76 kB   00:00
+(3/15): checkpolicy-2.5-8.el7.x86_64.rpm                   | 295 kB   00:00
+warning: /var/cache/yum/x86_64/7/docker-ce-stable/packages/docker-ce-20.10.5-3.el7.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+docker-ce-20.10.5-3.el7.x86_64.rpm 的公钥尚未安装
+(4/15): docker-ce-20.10.5-3.el7.x86_64.rpm                 |  27 MB   02:41
+(5/15): containerd.io-1.4.4-3.1.el7.x86_64.rpm             |  33 MB   03:45
+(6/15): fuse-overlayfs-0.7.2-6.el7_8.x86_64.rpm            |  54 kB   00:00
+(7/15): fuse3-libs-3.6.1-4.el7.x86_64.rpm                  |  82 kB   00:00
+(8/15): libcgroup-0.41-21.el7.x86_64.rpm                   |  66 kB   00:00
+(9/15): libsemanage-python-2.5-14.el7.x86_64.rpm           | 113 kB   00:00
+(10/15): python-IPy-0.75-6.el7.noarch.rpm                  |  32 kB   00:00
+(11/15): policycoreutils-python-2.5-34.el7.x86_64.rpm      | 457 kB   00:00
+(12/15): slirp4netns-0.4.3-4.el7_8.x86_64.rpm              |  81 kB   00:00
+(13/15): setools-libs-3.3.8-4.el7.x86_64.rpm               | 620 kB   00:00
+(14/15): docker-ce-rootless-extras-20.10.5-3.el7.x86_64.rp | 9.1 MB   00:44
+(15/15): docker-ce-cli-20.10.5-3.el7.x86_64.rpm                                                                                                       |  33 MB  00:05:11
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+总计                                                                                                                                         225 kB/s | 104 MB  00:07:53
+从 https://download.docker.com/linux/centos/gpg 检索密钥
+导入 GPG key 0x621E9F35:
+ 用户ID     : &quot;Docker Release (CE rpm) &lt;docker@docker.com&gt;&quot;
+ 指纹       : 060a 61c5 1b55 8a7f 742b 77aa c52f eb6b 621e 9f35
+ 来自       : https://download.docker.com/linux/centos/gpg
+是否继续？[y/N]：y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  正在安装    : libcgroup-0.41-21.el7.x86_64                                                                                                                            1/15
+  正在安装    : setools-libs-3.3.8-4.el7.x86_64                                                                                                                         2/15
+  正在安装    : audit-libs-python-2.8.5-4.el7.x86_64                                                                                                                    3/15
+  正在安装    : python-IPy-0.75-6.el7.noarch                                                                                                                            4/15
+  正在安装    : slirp4netns-0.4.3-4.el7_8.x86_64                                                                                                                        5/15
+  正在安装    : libsemanage-python-2.5-14.el7.x86_64                                                                                                                    6/15
+  正在安装    : fuse3-libs-3.6.1-4.el7.x86_64                                                                                                                           7/15
+  正在安装    : fuse-overlayfs-0.7.2-6.el7_8.x86_64                                                                                                                     8/15
+  正在安装    : checkpolicy-2.5-8.el7.x86_64                                                                                                                            9/15
+  正在安装    : policycoreutils-python-2.5-34.el7.x86_64                                                                                                               10/15
+  正在安装    : 2:container-selinux-2.119.2-1.911c772.el7_8.noarch                                                                                                     11/15
+setsebool:  SELinux is disabled.
+  正在安装    : containerd.io-1.4.4-3.1.el7.x86_64                                                                                                                     12/15
+  正在安装    : 1:docker-ce-cli-20.10.5-3.el7.x86_64                                                                                                                   13/15
+  正在安装    : docker-ce-rootless-extras-20.10.5-3.el7.x86_64                                                                                                         14/15
+  正在安装    : 3:docker-ce-20.10.5-3.el7.x86_64                                                                                                                       15/15
+  验证中      : 1:docker-ce-cli-20.10.5-3.el7.x86_64                                                                                                                    1/15
+  验证中      : checkpolicy-2.5-8.el7.x86_64                                                                                                                            2/15
+  验证中      : fuse3-libs-3.6.1-4.el7.x86_64                                                                                                                           3/15
+  验证中      : fuse-overlayfs-0.7.2-6.el7_8.x86_64                                                                                                                     4/15
+  验证中      : libsemanage-python-2.5-14.el7.x86_64                                                                                                                    5/15
+  验证中      : slirp4netns-0.4.3-4.el7_8.x86_64                                                                                                                        6/15
+  验证中      : 2:container-selinux-2.119.2-1.911c772.el7_8.noarch                                                                                                      7/15
+  验证中      : python-IPy-0.75-6.el7.noarch                                                                                                                            8/15
+  验证中      : 3:docker-ce-20.10.5-3.el7.x86_64                                                                                                                        9/15
+  验证中      : docker-ce-rootless-extras-20.10.5-3.el7.x86_64                                                                                                         10/15
+  验证中      : policycoreutils-python-2.5-34.el7.x86_64                                                                                                               11/15
+  验证中      : containerd.io-1.4.4-3.1.el7.x86_64                                                                                                                     12/15
+  验证中      : audit-libs-python-2.8.5-4.el7.x86_64                                                                                                                   13/15
+  验证中      : setools-libs-3.3.8-4.el7.x86_64                                                                                                                        14/15
+  验证中      : libcgroup-0.41-21.el7.x86_64                                                                                                                           15/15
+
+已安装:
+  containerd.io.x86_64 0:1.4.4-3.1.el7                      docker-ce.x86_64 3:20.10.5-3.el7                      docker-ce-cli.x86_64 1:20.10.5-3.el7
+
+作为依赖被安装:
+  audit-libs-python.x86_64 0:2.8.5-4.el7                      checkpolicy.x86_64 0:2.5-8.el7                    container-selinux.noarch 2:2.119.2-1.911c772.el7_8
+  docker-ce-rootless-extras.x86_64 0:20.10.5-3.el7            fuse-overlayfs.x86_64 0:0.7.2-6.el7_8             fuse3-libs.x86_64 0:3.6.1-4.el7
+  libcgroup.x86_64 0:0.41-21.el7                              libsemanage-python.x86_64 0:2.5-14.el7            policycoreutils-python.x86_64 0:2.5-34.el7
+  python-IPy.noarch 0:0.75-6.el7                              setools-libs.x86_64 0:3.3.8-4.el7                 slirp4netns.x86_64 0:0.4.3-4.el7_8
+
+完毕！
+[root@VM-0-2-centos ~]#
+
+</code></pre>
+<h3 id="启动docker查看版本">启动docker,查看版本</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# systemctl start docker
+[root@VM-0-2-centos ~]# docker version
+Client: Docker Engine - Community
+ Version:           20.10.5
+ API version:       1.41
+ Go version:        go1.13.15
+ Git commit:        55c4c88
+ Built:             Tue Mar  2 20:33:55 2021
+ OS/Arch:           linux/amd64
+ Context:           default
+ Experimental:      true
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          20.10.5
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.13.15
+  Git commit:       363e9a8
+  Built:            Tue Mar  2 20:32:17 2021
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.4.4
+  GitCommit:        05f951a3781f4f2c1911b05e61c160e9c30eaa8e
+ runc:
+  Version:          1.0.0-rc93
+  GitCommit:        12644e614e25b05da6fd08a38ffa0cfe1903fdec
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+[root@VM-0-2-centos ~]#
+</code></pre>
+<h3 id="hello-word">Hello Word</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+b8dfde127a29: Pull complete
+Digest: sha256:308866a43596e83578c7dfa15e27a73011bdd402185a84c5cd7f32a88b501a24
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+<h3 id="查看下载的镜像">查看下载的镜像</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    d1165f221234   2 weeks ago   13.3kB
+</code></pre>
+<h2 id="卸载docker">卸载docker</h2>
+<pre><code class="language-shell"> sudo yum remove docker-ce docker-ce-cli containerd.io
+
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+</code></pre>
+<h2 id="腾讯云-更换docker源">腾讯云 更换docker源</h2>
+<pre><code class="language-shell">vim /etc/docker/daemon.json
+# 输入以下内容,保存.
+{
+&quot;registry-mirrors&quot;: [
+ &quot;https://mirror.ccs.tencentyun.com&quot;
+]
+}
+# 重启docker
+sudo systemctl restart docker
+</code></pre>
+<h2 id="docker常用命令">docker常用命令</h2>
+<pre><code class="language-shell">docker version #显示docker版本信息
+docker info  #显示docker系统信息,包括镜像和容器信息
+docker 命令 --help #显示命令的帮助文档
+</code></pre>
+<h2 id="镜像命令">镜像命令</h2>
+<h3 id="docker-images-查看本地主机上的所有镜像">docker images 查看本地主机上的所有镜像</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos docker]# docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    d1165f221234   2 weeks ago   13.3kB
+
+[root@VM-0-2-centos docker]# docker images --help
+
+Usage:  docker images [OPTIONS] [REPOSITORY[:TAG]]
+
+List images
+
+Options:
+  -a, --all             Show all images (default hides intermediate images)
+      --digests         Show digests
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print images using a Go template
+      --no-trunc        Don't truncate output
+  -q, --quiet           Only show image IDs
+</code></pre>
+<h3 id="docker-search-搜索镜像">docker search 搜索镜像</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos docker]# docker search mysql
+NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql                             MySQL is a widely used, open-source relation…   10634     [OK]
+mariadb                           MariaDB Server is a high performing open sou…   3990      [OK]
+
+
+[root@VM-0-2-centos docker]# docker search --help
+
+Usage:  docker search [OPTIONS] TERM
+
+Search the Docker Hub for images
+
+Options:
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print search using a Go template
+      --limit int       Max number of search results (default 25)
+      --no-trunc        Don't truncate output
+      
+      
+[root@VM-0-2-centos docker]# docker search mysql --filter=STARS=5000
+NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql     MySQL is a widely used, open-source relation…   10634     [OK]
+</code></pre>
+<h3 id="docker-pull-下载镜像">docker pull 下载镜像</h3>
+<pre><code class="language-shell">[root@VM-0-2-centos ~]# docker pull mysql
+Using default tag: latest
+latest: Pulling from library/mysql
+6f28985ad184: Pull complete
+e7cd18945cf6: Pull complete
+ee91068b9313: Pull complete
+b4efa1a4f93b: Pull complete
+f220edfa5893: Pull complete
+74a27d3460f8: Pull complete
+2e11e23b7542: Pull complete
+fbce32c99761: Pull complete
+08545fb3966f: Extracting   19.5MB/113.1MB
+5b9c076841dc: Download complete
+ef8b369352ae: Download complete
+ebd210f0917d: Download complete
+</code></pre>
+<h3 id="docker-rmi-删除镜像">docker rmi 删除镜像</h3>
+<pre><code class="language-shell">docker rmi -f 容器id #删除指定容器
+docker rmi -f 容器id 容器id 容器id #删除多个容器
+docker rmi -f $(docker images -aq) #删除所有容器
+
+[root@VM-0-2-centos ~]# docker rmi -f d1165f221234
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:308866a43596e83578c7dfa15e27a73011bdd402185a84c5cd7f32a88b501a24
+Deleted: sha256:d1165f2212346b2bab48cb01c1e39ee8ad1be46b87873d9ca7a4e434980a7726
+</code></pre>
+<h2 id="容器命令">容器命令</h2>
+<h3 id="下载拉取镜像">下载拉取镜像</h3>
+<p>docker pull centos</p>
+<h3 id="新建容器并启动">新建容器并启动</h3>
+<pre><code class="language-shell">docker run [可选参数] image
+
+# 参数说明
+
+  --name=&quot;Name&quot; #容器名字 tomcat01 tomcat02 ,用来区分容器
+-d 						#后台方式运行
+-it	使用交互方式运行,进入容器查看内容
+-p	指定容器的端口 -p 8080:8080
+	-p	ip:主机端口:容器端口
+	-p 主机端口:容器端口 (常用)
+	-p 容器端口
+	容器端口
+-P	随机指定端口
+
+[root@VM-0-2-centos ~]# docker run -it centos /bin/bash
+[root@053419c0d190 /]# ls
+bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+[root@053419c0d190 /]# exit
+exit
+
+</code></pre>
+<h3 id="列出所有运行的容器">列出所有运行的容器</h3>
+<pre><code class="language-shell">docker ps 
+		# 列出当前正在运行的容器
+-a	#列出所有容器
+-n=? #显示最近创建的容器
+-q	#只显示容器的编号
+
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[root@VM-0-2-centos ~]# docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED             STATUS                          PORTS     NAMES
+053419c0d190   centos         &quot;/bin/bash&quot;   2 minutes ago       Exited (0) About a minute ago             nervous_hugle
+d659369cd7c3   d1165f221234   &quot;/hello&quot;      About an hour ago   Exited (0) About an hour ago              zen_stonebraker
+[root@VM-0-2-centos ~]#
+</code></pre>
+<h3 id="退出容器">退出容器</h3>
+<pre><code class="language-shell">exit #直接容器停止并退出
+Ctrl+P+Q #容器不停止退出
+
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[root@VM-0-2-centos ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+centos       latest    300e315adb2f   3 months ago   209MB
+[root@VM-0-2-centos ~]# docker run -it centos
+[root@e3958c4d528d /]# [root@VM-0-2-centos ~]#  #Ctrl+p+q退出
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+e3958c4d528d   centos    &quot;/bin/bash&quot;   19 seconds ago   Up 18 seconds             thirsty_solomon
+[root@VM-0-2-centos ~]#
+</code></pre>
+<h3 id="删除容器">删除容器</h3>
+<pre><code class="language-shell">docker rm 容器id #删除指定容器
+docker rm -f $(docker ps -aq)	#删除所有容器
+docker rm -a -q|xargs docker rm # 删除所有容器
+
+</code></pre>
+<h3 id="启动和停止容器的操作">启动和停止容器的操作</h3>
+<pre><code class="language-shell">docker start 容器id #启动容器
+docker restart 容器id
+docker stop 容器id
+docker kill 容器id #强制停止容器
+
+</code></pre>
+<h2 id="其它常用命令">其它常用命令</h2>
+<h3 id="后台启动容器">后台启动容器</h3>
+<pre><code class="language-shell"># docker run -d 镜像名
+
+[root@VM-0-2-centos ~]# docker run -d centos
+62c46ea2a37054800034585cdc73f4f9e0f980aa8cb3cbaa5c4beca8bb81a365
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[root@VM-0-2-centos ~]#
+
+# 常见的坑,docker后台运行,必须要有一个前台进程
+# nginx,容器启动后,没提供服务,就会立刻停止
+</code></pre>
+<h3 id="查看日志">查看日志</h3>
+<pre><code class="language-shell">docker logs -tf --tail num 容器id
+
+-tf #实时显示日志
+--tail num #显示日志条数
+
+</code></pre>
+<h3 id="查看容器中的进程信息">查看容器中的进程信息</h3>
+<pre><code class="language-shell">top 命令
+
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+af1c7b12dd98   centos    &quot;/bin/bash&quot;   38 seconds ago   Up 38 seconds             affectionate_lehmann
+[root@VM-0-2-centos ~]# docker top af1c7b12dd98
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                16746               16726               0                   20:58               pts/0               00:00:00            /bin/bash
+</code></pre>
+<h3 id="查看容器信息">查看容器信息</h3>
+<pre><code class="language-shell">docker inspect 容器id
+
+[root@VM-0-2-centos ~]# docker inspect af1c7b12dd98
+[
+    {
+        &quot;Id&quot;: &quot;af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7&quot;,
+        &quot;Created&quot;: &quot;2021-03-21T12:58:43.09586655Z&quot;,
+        &quot;Path&quot;: &quot;/bin/bash&quot;,
+        &quot;Args&quot;: [],
+        &quot;State&quot;: {
+            &quot;Status&quot;: &quot;running&quot;,
+            &quot;Running&quot;: true,
+            &quot;Paused&quot;: false,
+            &quot;Restarting&quot;: false,
+            &quot;OOMKilled&quot;: false,
+            &quot;Dead&quot;: false,
+            &quot;Pid&quot;: 16746,
+            &quot;ExitCode&quot;: 0,
+            &quot;Error&quot;: &quot;&quot;,
+            &quot;StartedAt&quot;: &quot;2021-03-21T12:58:43.437721075Z&quot;,
+            &quot;FinishedAt&quot;: &quot;0001-01-01T00:00:00Z&quot;
+        },
+        &quot;Image&quot;: &quot;sha256:300e315adb2f96afe5f0b2780b87f28ae95231fe3bdd1e16b9ba606307728f55&quot;,
+        &quot;ResolvConfPath&quot;: &quot;/var/lib/docker/containers/af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7/resolv.conf&quot;,
+        &quot;HostnamePath&quot;: &quot;/var/lib/docker/containers/af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7/hostname&quot;,
+        &quot;HostsPath&quot;: &quot;/var/lib/docker/containers/af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7/hosts&quot;,
+        &quot;LogPath&quot;: &quot;/var/lib/docker/containers/af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7/af1c7b12dd988e10cd3671d52410dda5fa6b62f30d67d31a430e972b6db095a7-json.log&quot;,
+        &quot;Name&quot;: &quot;/affectionate_lehmann&quot;,
+        &quot;RestartCount&quot;: 0,
+        &quot;Driver&quot;: &quot;overlay2&quot;,
+        &quot;Platform&quot;: &quot;linux&quot;,
+        &quot;MountLabel&quot;: &quot;&quot;,
+        &quot;ProcessLabel&quot;: &quot;&quot;,
+        &quot;AppArmorProfile&quot;: &quot;&quot;,
+        &quot;ExecIDs&quot;: null,
+        &quot;HostConfig&quot;: {
+            &quot;Binds&quot;: null,
+            &quot;ContainerIDFile&quot;: &quot;&quot;,
+            &quot;LogConfig&quot;: {
+                &quot;Type&quot;: &quot;json-file&quot;,
+                &quot;Config&quot;: {}
+            },
+            &quot;NetworkMode&quot;: &quot;default&quot;,
+            &quot;PortBindings&quot;: {},
+            &quot;RestartPolicy&quot;: {
+                &quot;Name&quot;: &quot;no&quot;,
+                &quot;MaximumRetryCount&quot;: 0
+            },
+            &quot;AutoRemove&quot;: false,
+            &quot;VolumeDriver&quot;: &quot;&quot;,
+            &quot;VolumesFrom&quot;: null,
+            &quot;CapAdd&quot;: null,
+            &quot;CapDrop&quot;: null,
+            &quot;CgroupnsMode&quot;: &quot;host&quot;,
+            &quot;Dns&quot;: [],
+            &quot;DnsOptions&quot;: [],
+            &quot;DnsSearch&quot;: [],
+            &quot;ExtraHosts&quot;: null,
+            &quot;GroupAdd&quot;: null,
+            &quot;IpcMode&quot;: &quot;private&quot;,
+            &quot;Cgroup&quot;: &quot;&quot;,
+            &quot;Links&quot;: null,
+            &quot;OomScoreAdj&quot;: 0,
+            &quot;PidMode&quot;: &quot;&quot;,
+            &quot;Privileged&quot;: false,
+            &quot;PublishAllPorts&quot;: false,
+            &quot;ReadonlyRootfs&quot;: false,
+            &quot;SecurityOpt&quot;: null,
+            &quot;UTSMode&quot;: &quot;&quot;,
+            &quot;UsernsMode&quot;: &quot;&quot;,
+            &quot;ShmSize&quot;: 67108864,
+            &quot;Runtime&quot;: &quot;runc&quot;,
+            &quot;ConsoleSize&quot;: [
+                0,
+                0
+            ],
+            &quot;Isolation&quot;: &quot;&quot;,
+            &quot;CpuShares&quot;: 0,
+            &quot;Memory&quot;: 0,
+            &quot;NanoCpus&quot;: 0,
+            &quot;CgroupParent&quot;: &quot;&quot;,
+            &quot;BlkioWeight&quot;: 0,
+            &quot;BlkioWeightDevice&quot;: [],
+            &quot;BlkioDeviceReadBps&quot;: null,
+            &quot;BlkioDeviceWriteBps&quot;: null,
+            &quot;BlkioDeviceReadIOps&quot;: null,
+            &quot;BlkioDeviceWriteIOps&quot;: null,
+            &quot;CpuPeriod&quot;: 0,
+            &quot;CpuQuota&quot;: 0,
+            &quot;CpuRealtimePeriod&quot;: 0,
+            &quot;CpuRealtimeRuntime&quot;: 0,
+            &quot;CpusetCpus&quot;: &quot;&quot;,
+            &quot;CpusetMems&quot;: &quot;&quot;,
+            &quot;Devices&quot;: [],
+            &quot;DeviceCgroupRules&quot;: null,
+            &quot;DeviceRequests&quot;: null,
+            &quot;KernelMemory&quot;: 0,
+            &quot;KernelMemoryTCP&quot;: 0,
+            &quot;MemoryReservation&quot;: 0,
+            &quot;MemorySwap&quot;: 0,
+            &quot;MemorySwappiness&quot;: null,
+            &quot;OomKillDisable&quot;: false,
+            &quot;PidsLimit&quot;: null,
+            &quot;Ulimits&quot;: null,
+            &quot;CpuCount&quot;: 0,
+            &quot;CpuPercent&quot;: 0,
+            &quot;IOMaximumIOps&quot;: 0,
+            &quot;IOMaximumBandwidth&quot;: 0,
+            &quot;MaskedPaths&quot;: [
+                &quot;/proc/asound&quot;,
+                &quot;/proc/acpi&quot;,
+                &quot;/proc/kcore&quot;,
+                &quot;/proc/keys&quot;,
+                &quot;/proc/latency_stats&quot;,
+                &quot;/proc/timer_list&quot;,
+                &quot;/proc/timer_stats&quot;,
+                &quot;/proc/sched_debug&quot;,
+                &quot;/proc/scsi&quot;,
+                &quot;/sys/firmware&quot;
+            ],
+            &quot;ReadonlyPaths&quot;: [
+                &quot;/proc/bus&quot;,
+                &quot;/proc/fs&quot;,
+                &quot;/proc/irq&quot;,
+                &quot;/proc/sys&quot;,
+                &quot;/proc/sysrq-trigger&quot;
+            ]
+        },
+        &quot;GraphDriver&quot;: {
+            &quot;Data&quot;: {
+                &quot;LowerDir&quot;: &quot;/var/lib/docker/overlay2/61625c5c49b478f073624c4be0029218e1deef436a84cfb306c61af3d4f920c4-init/diff:/var/lib/docker/overlay2/410f5daba7036aa601c141f138aed4ad234f406b419f7c01b122ef70ee331c3b/diff&quot;,
+                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/61625c5c49b478f073624c4be0029218e1deef436a84cfb306c61af3d4f920c4/merged&quot;,
+                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/61625c5c49b478f073624c4be0029218e1deef436a84cfb306c61af3d4f920c4/diff&quot;,
+                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/61625c5c49b478f073624c4be0029218e1deef436a84cfb306c61af3d4f920c4/work&quot;
+            },
+            &quot;Name&quot;: &quot;overlay2&quot;
+        },
+        &quot;Mounts&quot;: [],
+        &quot;Config&quot;: {
+            &quot;Hostname&quot;: &quot;af1c7b12dd98&quot;,
+            &quot;Domainname&quot;: &quot;&quot;,
+            &quot;User&quot;: &quot;&quot;,
+            &quot;AttachStdin&quot;: true,
+            &quot;AttachStdout&quot;: true,
+            &quot;AttachStderr&quot;: true,
+            &quot;Tty&quot;: true,
+            &quot;OpenStdin&quot;: true,
+            &quot;StdinOnce&quot;: true,
+            &quot;Env&quot;: [
+                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;
+            ],
+            &quot;Cmd&quot;: [
+                &quot;/bin/bash&quot;
+            ],
+            &quot;Image&quot;: &quot;centos&quot;,
+            &quot;Volumes&quot;: null,
+            &quot;WorkingDir&quot;: &quot;&quot;,
+            &quot;Entrypoint&quot;: null,
+            &quot;OnBuild&quot;: null,
+            &quot;Labels&quot;: {
+                &quot;org.label-schema.build-date&quot;: &quot;20201204&quot;,
+                &quot;org.label-schema.license&quot;: &quot;GPLv2&quot;,
+                &quot;org.label-schema.name&quot;: &quot;CentOS Base Image&quot;,
+                &quot;org.label-schema.schema-version&quot;: &quot;1.0&quot;,
+                &quot;org.label-schema.vendor&quot;: &quot;CentOS&quot;
+            }
+        },
+        &quot;NetworkSettings&quot;: {
+            &quot;Bridge&quot;: &quot;&quot;,
+            &quot;SandboxID&quot;: &quot;fa5bfbe40d49a2a67618cf9d56ada81cf5fed384e547653b569735cbbd6d55cb&quot;,
+            &quot;HairpinMode&quot;: false,
+            &quot;LinkLocalIPv6Address&quot;: &quot;&quot;,
+            &quot;LinkLocalIPv6PrefixLen&quot;: 0,
+            &quot;Ports&quot;: {},
+            &quot;SandboxKey&quot;: &quot;/var/run/docker/netns/fa5bfbe40d49&quot;,
+            &quot;SecondaryIPAddresses&quot;: null,
+            &quot;SecondaryIPv6Addresses&quot;: null,
+            &quot;EndpointID&quot;: &quot;77993b5f91d58ab00bd8e7a667feb11af4e5faffa494731d323101199fad3fca&quot;,
+            &quot;Gateway&quot;: &quot;172.17.0.1&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;IPAddress&quot;: &quot;172.17.0.2&quot;,
+            &quot;IPPrefixLen&quot;: 16,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+            &quot;Networks&quot;: {
+                &quot;bridge&quot;: {
+                    &quot;IPAMConfig&quot;: null,
+                    &quot;Links&quot;: null,
+                    &quot;Aliases&quot;: null,
+                    &quot;NetworkID&quot;: &quot;416e52c0a778ba926d49e636f6f63da6aa220730c170021e8e8d4f1195c60a87&quot;,
+                    &quot;EndpointID&quot;: &quot;77993b5f91d58ab00bd8e7a667feb11af4e5faffa494731d323101199fad3fca&quot;,
+                    &quot;Gateway&quot;: &quot;172.17.0.1&quot;,
+                    &quot;IPAddress&quot;: &quot;172.17.0.2&quot;,
+                    &quot;IPPrefixLen&quot;: 16,
+                    &quot;IPv6Gateway&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6PrefixLen&quot;: 0,
+                    &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+                    &quot;DriverOpts&quot;: null
+                }
+            }
+        }
+    }
+]
+
+
+</code></pre>
+<h3 id="进入当前正在运行的容器">进入当前正在运行的容器</h3>
+<pre><code class="language-shell"># 容器经常后台运行,如何进入正在运行的容器呢
+
+# 命令
+# docker exec -it 容器id bashshell
+
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES
+af1c7b12dd98   centos    &quot;/bin/bash&quot;   5 minutes ago   Up 5 minutes             affectionate_lehmann
+[root@VM-0-2-centos ~]# docker exec -it af1c7b12dd98 /bin/bash
+[root@af1c7b12dd98 /]# ls
+bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+[root@af1c7b12dd98 /]#
+
+# 方式二
+# docker attach 容器ID
+
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+af1c7b12dd98   centos    &quot;/bin/bash&quot;   10 minutes ago   Up 10 minutes             affectionate_lehmann
+[root@VM-0-2-centos ~]# docker attach af1c7b12dd98
+[root@af1c7b12dd98 /]# ls
+bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+[root@af1c7b12dd98 /]#
+
+# docker exec	#进入新开终端
+# docker attach #进入容器运行正在执行的终端,不会新开终端
+
+</code></pre>
+<h3 id="从容器内拷贝文件到主机">从容器内拷贝文件到主机</h3>
+<pre><code class="language-shell">docker cp 容器id:容器内路径 目的主机路径
+
+# 示例
+[root@VM-0-2-centos ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+af1c7b12dd98   centos    &quot;/bin/bash&quot;   17 minutes ago   Up 17 minutes             affectionate_lehmann
+[root@VM-0-2-centos ~]# docker attach af1c7b12dd98
+[root@af1c7b12dd98 /]# ls
+bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var
+dev  home  lib64  media       opt  root  sbin  sys  usr
+[root@af1c7b12dd98 /]# touch /home/ceshi.txt
+# Ctrl+p+q 退出容器
+[root@VM-0-2-centos ~]# docker cp af1c7b12dd98:/home/ceshi.txt /usr #拷贝到主机usr目录
+[root@VM-0-2-centos ~]# cd /usr #进入主机usr目录
+[root@VM-0-2-centos usr]# ls
+bin  ceshi.txt  etc  games  include  lib  lib64  libexec  local  sbin  share  src  tmp
+
+</code></pre>
+
             </div>
             
             
@@ -394,7 +1351,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://haibing.xyz/post/markdown-cha-ru-yin-pin/" title="markdown插入音频">https://haibing.xyz/post/markdown-cha-ru-yin-pin/</a>
+      <a href="https://haibing.xyz/post/docker-bi-ji/" title="Docker笔记">https://haibing.xyz/post/docker-bi-ji/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -403,21 +1360,15 @@
   </ul>
   <div class="tags">
     
-      <a href="https://haibing.xyz/tag/6pMFv_9Cr/"># markdown</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="ffmpeg推流" href="https://haibing.xyz/post/ffmpeg-tui-liu/">ffmpeg推流</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="ffmpeg推流" href="https://haibing.xyz/post/ffmpeg-tui-liu/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="markdown插入视频" href="https://haibing.xyz/post/markdown-cha-ru-shi-pin/">markdown插入视频</a>
-        <a class="nav-mobile-next" title="markdown插入视频" href="https://haibing.xyz/post/markdown-cha-ru-shi-pin/">下一篇</a>
+        <a class="nav-pc-next" title="接码平台" href="https://haibing.xyz/post/jie-ma-ping-tai/">接码平台</a>
+        <a class="nav-mobile-next" title="接码平台" href="https://haibing.xyz/post/jie-ma-ping-tai/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
