@@ -1,0 +1,1154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.haibing.xyz</id>
+    <title>海冰</title>
+    <updated>2024-04-16T06:22:24.299Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.haibing.xyz"/>
+    <link rel="self" href="https://blog.haibing.xyz/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://blog.haibing.xyz/images/avatar.png</logo>
+    <icon>https://blog.haibing.xyz/favicon.ico</icon>
+    <rights>All rights reserved 2024, 海冰</rights>
+    <entry>
+        <title type="html"><![CDATA[appium ios 环境搭建]]></title>
+        <id>https://blog.haibing.xyz/post/appium-ios-huan-jing-da-jian/</id>
+        <link href="https://blog.haibing.xyz/post/appium-ios-huan-jing-da-jian/">
+        </link>
+        <updated>2022-05-11T07:45:40.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="安装xcode">安装xcode</h2>
+<p>可使用第三方下载工具安装<code>https://github.com/vineetchoudhary/Downloader-for-Apple-Developers</code></p>
+<pre><code class="language-shell">curl -s https://xcdownloader.com/install.sh | bash
+</code></pre>
+<h2 id="安装xcode-command-line-tools">安装xcode command line tools</h2>
+<p>同上</p>
+<h2 id="安装brew">安装brew</h2>
+<pre><code class="language-shell">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+<h2 id="安装nvm">安装nvm</h2>
+<p>brew install nvm</p>
+<h2 id="安装node">安装node</h2>
+<p>nvm list-remove #查看版本<br>
+nvm install</p>
+<h2 id="安装appium-doctor">安装appium-doctor</h2>
+<p>npm install -g appium-doctor</p>
+<h2 id="检测依赖">检测依赖</h2>
+<p>appium-doctor --ios</p>
+<pre><code class="language-shell">appium-doctor --ios                                                                              22-05-11 - 9:37:48
+info AppiumDoctor Appium Doctor v.1.16.0
+info AppiumDoctor ### Diagnostic for necessary dependencies starting ###
+info AppiumDoctor  ✔ The Node.js binary was found at: /Users/apple/.nvm/versions/node/v16.15.0/bin/node
+info AppiumDoctor  ✔ Node version is 16.15.0
+WARN AppiumDoctor  ✖ Error running xcrun simctl
+info AppiumDoctor  ✔ Xcode Command Line Tools are installed in: /Applications/Xcode.app/Contents/Developer
+info AppiumDoctor  ✔ DevToolsSecurity is enabled.
+info AppiumDoctor  ✔ The Authorization DB is set up properly.
+WARN AppiumDoctor  ✖ Carthage was NOT found!
+info AppiumDoctor  ✔ HOME is set to: /Users/apple
+info AppiumDoctor ### Diagnostic for necessary dependencies completed, 2 fixes needed. ###
+</code></pre>
+<h2 id="根据检测结果安装相关依赖">根据检测结果安装相关依赖</h2>
+<p>brew install Carthage<br>
+npm i -g mjpeg-consumer<br>
+brew install lyft/formulae/set-simulator-location</p>
+<h2 id="安装appium-server-gui">安装Appium-Server-GUI</h2>
+<p>下载dmg<br>
+<code>https://github.com/appium/appium-desktop/releases/tag/v1.22.3</code><br>
+运行报java错误解决</p>
+<pre><code class="language-shell">xattr -cr &quot;/Applications/Appium Server GUI.app&quot;
+
+codesign --deep --sign - /Applications/Appium\ Server\ GUI.app
+</code></pre>
+<h2 id="appium中文文档">appium中文文档</h2>
+<p><code>http://appium.io/docs/cn/about-appium/intro/</code></p>
+<h1 id="安卓环境">安卓环境</h1>
+<h2 id="配置java_home环境变量">配置JAVA_HOME环境变量</h2>
+<pre><code class="language-shell">export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASS_PATH=$JAVA_HOME/lib
+</code></pre>
+<h2 id="配置android_home环境变量">配置ANDROID_HOME环境变量</h2>
+<p>下载sdk http://tools.android-studio.org/index.php/sdk解压</p>
+<pre><code class="language-shell"># android_home
+export ANDROID_HOME=/Volumes/D/android-sdk-macosx
+export PATH=${PATH}:${ANDROID_HOME}/tools
+# adb
+export PATH=&quot;/Volumes/D/android-sdk-macosx/platform-tools:$PATH&quot;
+
+</code></pre>
+<h2 id="检测">检测</h2>
+<pre><code class="language-shell">appium-doctor --android
+info AppiumDoctor Appium Doctor v.1.16.0
+info AppiumDoctor ### Diagnostic for necessary dependencies starting ###
+info AppiumDoctor  ✔ The Node.js binary was found at: /Users/apple/.nvm/versions/node/v16.15.0/bin/node
+info AppiumDoctor  ✔ Node version is 16.15.0
+info AppiumDoctor  ✔ ANDROID_HOME is set to: /Volumes/D/android-sdk-macosx
+info AppiumDoctor  ✔ JAVA_HOME is set to: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+info AppiumDoctor    Checking adb, android, emulator
+info AppiumDoctor      'adb' is in /Volumes/D/android-sdk-macosx/platform-tools/adb
+info AppiumDoctor      'android' is in /Volumes/D/android-sdk-macosx/tools/android
+info AppiumDoctor      'emulator' is in /Volumes/D/android-sdk-macosx/tools/emulator
+info AppiumDoctor  ✔ adb, android, emulator exist: /Volumes/D/android-sdk-macosx
+info AppiumDoctor  ✔ 'bin' subfolder exists under '/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home'
+info AppiumDoctor ### Diagnostic for necessary dependencies completed, no fix needed. ###
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python脚本之click使用]]></title>
+        <id>https://blog.haibing.xyz/post/python-jiao-ben-zhi-click-shi-yong/</id>
+        <link href="https://blog.haibing.xyz/post/python-jiao-ben-zhi-click-shi-yong/">
+        </link>
+        <updated>2022-03-29T09:22:56.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="安装">安装</h2>
+<pre><code class="language-shell">pip3 install click
+</code></pre>
+<h2 id="快速开始">快速开始</h2>
+<pre><code class="language-py">import click
+
+@click.command()
+def hello():
+	click.echo('hello word')
+	
+if __name__ == '__main__':
+	hello()
+</code></pre>
+<h2 id="click定义可选选项option">Click定义可选选项Option</h2>
+<pre><code>●在Click中,可以使用dick .option来定义选项
+●option 中设置default为默认选项
+●option 中设置help为帮助信息
+●option 设置type为数据类型
+●option 设置hide_input 可以隐藏输入
+●option 设置confirmation_prompt可以脸证输入
+●option 设置nargs表示接受多个值
+</code></pre>
+<h2 id="click定义参数argument">Click定义参数Argument</h2>
+<pre><code>●在Click中,可以使用dick.argument来定义参数
+●argument 设置nargs 表示接受多个值
+●argument 设置type设定格式
+●argument 设置type为click File支持对文件操作
+</code></pre>
+<h2 id="click接受的参数类型">Click接受的参数类型</h2>
+<pre><code>●str : 字符串
+●int : 数值
+●float : 浮点數
+●bool : 布尔值
+●click.JUID :  UUID值
+●clickFile : 文件类型
+● click.Path : 文件路径类型
+●click.Choice : 可选项类型
+●click.IntRange : 数值可选范围
+●click.FloatRange : 浮点数可选范围
+●click.DateTime : 时间
+</code></pre>
+<h2 id="click获取用户输入prompt">Click获取用户输入Prompt</h2>
+<pre><code>●Click 提供了dick.prompt要求用户输入
+
+●Click 提供了dlick.confirm要求用户确认
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="安装">安装</h2>
+<pre><code class="language-shell">pip3 install click
+</code></pre>
+<h2 id="快速开始">快速开始</h2>
+<pre><code class="language-py">import click
+
+@click.command()
+def hello():
+	click.echo('hello word')
+	
+if __name__ == '__main__':
+	hello()
+</code></pre>
+<h2 id="click定义可选选项option">Click定义可选选项Option</h2>
+<pre><code>●在Click中,可以使用dick .option来定义选项
+●option 中设置default为默认选项
+●option 中设置help为帮助信息
+●option 设置type为数据类型
+●option 设置hide_input 可以隐藏输入
+●option 设置confirmation_prompt可以脸证输入
+●option 设置nargs表示接受多个值
+</code></pre>
+<h2 id="click定义参数argument">Click定义参数Argument</h2>
+<pre><code>●在Click中,可以使用dick.argument来定义参数
+●argument 设置nargs 表示接受多个值
+●argument 设置type设定格式
+●argument 设置type为click File支持对文件操作
+</code></pre>
+<h2 id="click接受的参数类型">Click接受的参数类型</h2>
+<pre><code>●str : 字符串
+●int : 数值
+●float : 浮点數
+●bool : 布尔值
+●click.JUID :  UUID值
+●clickFile : 文件类型
+● click.Path : 文件路径类型
+●click.Choice : 可选项类型
+●click.IntRange : 数值可选范围
+●click.FloatRange : 浮点数可选范围
+●click.DateTime : 时间
+</code></pre>
+<h2 id="click获取用户输入prompt">Click获取用户输入Prompt</h2>
+<pre><code>●Click 提供了dick.prompt要求用户输入
+
+●Click 提供了dlick.confirm要求用户确认
+</code></pre>
+<!-- more -->
+<h1 id="发布cli脚本">发布cli脚本</h1>
+<p>以下面脚本为例：命名 <code>m3p4.py</code></p>
+<pre><code class="language-py">import click
+import os
+# 下载m3u8视频
+
+@click.command()
+@click.option('--url', prompt='输入可播放的m3u8地址', help='输入可播放的m3u8地址,将通过ffmpeg下载为mp4视频')
+# @click.argument('url', default='https://www.youtube.com/watch?v=dQw4w9WgXcQ',type=str)
+@click.argument('videoname', default='video',type=str)
+def get_video(url,videoname):
+    click.secho(url,fg='green')
+    click.secho(videoname,bg='red',fg='white')
+    os.system('ffmpeg -i ' + url + ' -c copy ' + videoname + '.mp4')
+
+if __name__ == '__main__':
+    get_video()
+
+</code></pre>
+<h2 id="编写发布脚本">编写发布脚本</h2>
+<p>安装依赖包：</p>
+<pre><code class="language-shell">pip3 install setuptools wheel
+</code></pre>
+<p>编写打包脚本</p>
+<pre><code>from setuptools import setup, find_packages
+
+setup (
+	name=&quot;m3p4&quot;, # 脚本名称
+	version=&quot;0.0.3&quot;, # 版本
+	author=&quot;Haibing&quot;, # 作者名
+    author_email=&quot;haibing3344@gmail.com&quot;, # 作者邮箱
+	description=&quot;m3u8视频下载&quot;, # 脚本描述
+	long_description=&quot; #可将m3u8下载为mp4&quot;,# 脚本长描述，支持markdown格式
+	long_description_content_type= &quot;text/markdown&quot;,
+	packages=find_packages(),# 自动查找包
+	py_modules= [&quot;m3p4&quot;], # 导入的模块
+	install_requires= [
+		&quot;click&quot; # 安装依赖包
+		],
+		entry_points={
+       'console_scripts':[
+           'm3p4=m3p4:get_video' # 命令=模块:函数 指定m3p4脚本里面函数，注意此处模块需与m3p4.py脚本名称一致
+        ]
+     }
+)
+</code></pre>
+<p>目录结构：</p>
+<pre><code class="language-shell">m3p4
+	- m3p4.py
+	- setup.py
+</code></pre>
+<p>构建包</p>
+<pre><code class="language-shell">python3 setup.py sdist bdist_wheel
+
+ 自动生成dist build 目录
+</code></pre>
+<p>本地安装</p>
+<pre><code class="language-shell">python3 setup.py install
+</code></pre>
+<h2 id="发布cli包">发布cli包</h2>
+<p>安装依赖twine</p>
+<pre><code class="language-she">pip3 install twine
+</code></pre>
+<p>检查包</p>
+<pre><code class="language-shell">twine check dist/*
+Checking dist/m3p4-0.0.1-py3-none-any.whl: PASSED
+Checking dist/m3p4-0.0.1.tar.gz: PASSED
+</code></pre>
+<p>上传包,先到https://www.pypi.org/注册账号(测试包需要到https://test.pypi.org/注册账号)</p>
+<pre><code class="language-shell">(.venv) (base) Pythonlearning % twine upload --repository testpypi dist/* #--repository testpypi 表示上传到测试版本
+Uploading distributions to https://test.pypi.org/legacy/
+Enter your username: haibing3344
+Enter your password:
+Uploading m3p4-0.0.1-py3-none-any.whl
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 4.03k/4.03k [00:02&lt;00:00, 1.42kB/s]
+Uploading m3p4-0.0.1.tar.gz
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.72k/3.72k [00:01&lt;00:00, 2.73kB/s]
+
+View at:
+https://test.pypi.org/project/m3p4/0.0.1/
+</code></pre>
+<p>上传完成后pypi平台上可查看包：</p>
+<figure data-type="image" tabindex="1"><img src="https://blog.haibing.xyz/post-images/1648545847362.png" alt="" loading="lazy"></figure>
+<h2 id="通过pip3安装脚本">通过pip3安装脚本</h2>
+<pre><code class="language-shel">pip3 install -i https://test.pypi.org/simple/ m3p4==0.0.3
+</code></pre>
+<h2 id="使用命令">使用命令</h2>
+<pre><code class="language-shell">(.venv) (base) Pythonlearning % m3p4 --help
+Usage: m3p4 [OPTIONS] [VIDEONAME]
+
+Options:
+  --url TEXT  输入可播放的m3u8地址,将通过ffmpeg下载为mp4视频
+  --help      Show this message and exit.
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[centos 添加开机自启脚本]]></title>
+        <id>https://blog.haibing.xyz/post/centos-tian-jia-kai-ji-zi-qi-jiao-ben/</id>
+        <link href="https://blog.haibing.xyz/post/centos-tian-jia-kai-ji-zi-qi-jiao-ben/">
+        </link>
+        <updated>2022-03-22T09:52:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>以脚本autostart.sh为例：</p>
+<pre><code class="language-shell">#!/bin/bash
+#description:开机自启脚本
+/usr/local/tomcat/bin/startup.sh  #启动tomcat
+</code></pre>
+<p>1、赋予脚本可执行权限（/opt/script/autostart.sh是你的脚本路径）</p>
+<pre><code class="language-shell">chmod +x /opt/script/autostart.sh
+</code></pre>
+<p>2、打开/etc/rc.d/rc.local或/etc/rc.local文件，在末尾增加如下内容</p>
+<pre><code class="language-shell">cat /etc/rc.d/rc.local
+#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+touch /var/lock/subsys/local
+/usr/local/qcloud/irq/net_smp_affinity.sh &gt;/tmp/net_affinity.log 2&gt;&amp;1
+/usr/local/qcloud/cpuidle/cpuidle_support.sh &amp;&gt; /tmp/cpuidle_support.log
+/usr/local/qcloud/rps/set_rps.sh &gt;/tmp/setRps.log 2&gt;&amp;1
+/usr/local/qcloud/irq/virtio_blk_smp_affinity.sh &gt; /tmp/virtio_blk_affinity.log 2&gt;&amp;1
+/usr/local/qcloud/gpu/nv_gpu_conf.sh &gt;/tmp/nv_gpu_conf.log 2&gt;&amp;1
+/opt/script/autostart.sh &gt;/root/frp_0.34.1_linux_amd64/frps.log 2&gt;&amp;1 # 自启动脚本
+
+</code></pre>
+<p>3、在centos7中，/etc/rc.d/rc.local的权限被降低了，所以需要执行如下命令赋予其可执行权限</p>
+<pre><code class="language-shell">chmod +x /etc/rc.d/rc.local
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>以脚本autostart.sh为例：</p>
+<pre><code class="language-shell">#!/bin/bash
+#description:开机自启脚本
+/usr/local/tomcat/bin/startup.sh  #启动tomcat
+</code></pre>
+<p>1、赋予脚本可执行权限（/opt/script/autostart.sh是你的脚本路径）</p>
+<pre><code class="language-shell">chmod +x /opt/script/autostart.sh
+</code></pre>
+<p>2、打开/etc/rc.d/rc.local或/etc/rc.local文件，在末尾增加如下内容</p>
+<pre><code class="language-shell">cat /etc/rc.d/rc.local
+#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+touch /var/lock/subsys/local
+/usr/local/qcloud/irq/net_smp_affinity.sh &gt;/tmp/net_affinity.log 2&gt;&amp;1
+/usr/local/qcloud/cpuidle/cpuidle_support.sh &amp;&gt; /tmp/cpuidle_support.log
+/usr/local/qcloud/rps/set_rps.sh &gt;/tmp/setRps.log 2&gt;&amp;1
+/usr/local/qcloud/irq/virtio_blk_smp_affinity.sh &gt; /tmp/virtio_blk_affinity.log 2&gt;&amp;1
+/usr/local/qcloud/gpu/nv_gpu_conf.sh &gt;/tmp/nv_gpu_conf.log 2&gt;&amp;1
+/opt/script/autostart.sh &gt;/root/frp_0.34.1_linux_amd64/frps.log 2&gt;&amp;1 # 自启动脚本
+
+</code></pre>
+<p>3、在centos7中，/etc/rc.d/rc.local的权限被降低了，所以需要执行如下命令赋予其可执行权限</p>
+<pre><code class="language-shell">chmod +x /etc/rc.d/rc.local
+</code></pre>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Install Kodi to the Fire TV]]></title>
+        <id>https://blog.haibing.xyz/post/install-kodi-to-the-fire-tv/</id>
+        <link href="https://blog.haibing.xyz/post/install-kodi-to-the-fire-tv/">
+        </link>
+        <updated>2022-03-14T05:47:24.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="install-kodi-to-the-fire-tv">Install Kodi to the Fire TV</h2>
+<blockquote>
+<p>Note: If your APK file name contains spaces, make sure you put quotes around it in the adb commands. On OS X and Linux, you may need to prepend ./ to the adb commands.</p>
+</blockquote>
+<ol>
+<li>
+<p>On your host (PC or other Android device), download your desired Kodi APK</p>
+</li>
+<li>
+<p>Open a Command Prompt (Windows), Terminal (OS X/Linux), or Terminal Emulator app (Android)</p>
+</li>
+<li>
+<p>Navigate (CD) to the directory with your Kodi APK (In Terminal Emulator on Android you only need to run the adb commands)</p>
+</li>
+<li>
+<p>Run the following commands</p>
+</li>
+</ol>
+<pre><code class="language-shell">adb kill-server
+adb start-server
+adb connect &lt;ip-address-of-fire-tv&gt;
+</code></pre>
+<ol start="5">
+<li>
+<p>ADB is connected when it reports the message &quot;connected to <ip-address-of-fire-tv>:<port>&quot;</p>
+</li>
+<li>
+<p>Run one of the following commands</p>
+<pre><code class="language-shell">adb install &lt;apk-file-name&gt;
+</code></pre>
+<p>(or if you are upgrading from a previous Kodi install, use this instead)</p>
+<pre><code class="language-shelle">adb install -r &lt;apk-file-name&gt;
+</code></pre>
+</li>
+<li>
+<p>Installation is complete when it reports the message &quot;success&quot;</p>
+</li>
+</ol>
+<blockquote>
+<p>(Note: For Android you need to type in the full path. e.g. &gt;adb install /sdcard/Download/apk-file-name.apk)</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="install-kodi-to-the-fire-tv">Install Kodi to the Fire TV</h2>
+<blockquote>
+<p>Note: If your APK file name contains spaces, make sure you put quotes around it in the adb commands. On OS X and Linux, you may need to prepend ./ to the adb commands.</p>
+</blockquote>
+<ol>
+<li>
+<p>On your host (PC or other Android device), download your desired Kodi APK</p>
+</li>
+<li>
+<p>Open a Command Prompt (Windows), Terminal (OS X/Linux), or Terminal Emulator app (Android)</p>
+</li>
+<li>
+<p>Navigate (CD) to the directory with your Kodi APK (In Terminal Emulator on Android you only need to run the adb commands)</p>
+</li>
+<li>
+<p>Run the following commands</p>
+</li>
+</ol>
+<pre><code class="language-shell">adb kill-server
+adb start-server
+adb connect &lt;ip-address-of-fire-tv&gt;
+</code></pre>
+<ol start="5">
+<li>
+<p>ADB is connected when it reports the message &quot;connected to <ip-address-of-fire-tv>:<port>&quot;</p>
+</li>
+<li>
+<p>Run one of the following commands</p>
+<pre><code class="language-shell">adb install &lt;apk-file-name&gt;
+</code></pre>
+<p>(or if you are upgrading from a previous Kodi install, use this instead)</p>
+<pre><code class="language-shelle">adb install -r &lt;apk-file-name&gt;
+</code></pre>
+</li>
+<li>
+<p>Installation is complete when it reports the message &quot;success&quot;</p>
+</li>
+</ol>
+<blockquote>
+<p>(Note: For Android you need to type in the full path. e.g. &gt;adb install /sdcard/Download/apk-file-name.apk)</p>
+</blockquote>
+<!-- more -->
+<p>https://kodi.wiki/view/HOW-TO:Install_Kodi_on_Fire_TV</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[shell去除文件名空格并重命名方法]]></title>
+        <id>https://blog.haibing.xyz/post/shell-qu-chu-wen-jian-ming-kong-ge-bing-chong-ming-ming-fang-fa/</id>
+        <link href="https://blog.haibing.xyz/post/shell-qu-chu-wen-jian-ming-kong-ge-bing-chong-ming-ming-fang-fa/">
+        </link>
+        <updated>2022-03-02T07:17:03.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-shell">#!/bin/bash
+#去除空格
+for loop in `ls -1 | tr ' '  '#'`
+ do  
+    mv  &quot;`echo $loop | sed 's/#/ /g' `&quot;  &quot;`echo $loop |sed 's/#//g' `&quot;  2&gt; /dev/null 
+done
+</code></pre>
+<blockquote>
+<p>首先利用ls -1（不是字母l，是数字1），将单个文件放在一行，然后利用替换，就文件名中的空格替换为#（具体自己看情况）,下面就是利用一些替换将文件名给替换回来，不过需要记住，含有空格的文件名需要使用引号括起来，最终就可以替换当前目录下的所有文件名中的空格</p>
+</blockquote>
+<pre><code class="language-shell">#!/bin/bash
+#重命名
+for i in `ls`;do mv $i ${i#*-};done
+</code></pre>
+<pre><code class="language-shell">${i#*-}表示字符串截取，去掉都一个「-」左边的字符
+# ## 删除左边，保留右边 echo ${var##*字符} 两个#表示最后一个字符
+% %% 删除右边，保留左边 echo ${var%字符*} 两个%表示最后一个字符
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用omniedge搭建自己的私有网络]]></title>
+        <id>https://blog.haibing.xyz/post/shi-yong-omniedge-da-jian-zi-ji-de-si-you-wang-luo/</id>
+        <link href="https://blog.haibing.xyz/post/shi-yong-omniedge-da-jian-zi-ji-de-si-you-wang-luo/">
+        </link>
+        <updated>2022-02-23T06:23:47.000Z</updated>
+        <content type="html"><![CDATA[<p>Omniedge's Peer-to-Peer Layer 2 VPN solutions are not only a great and affordable network solution for a small team but also for big companies with thousands of computers all around the world.<br>
+https://omniedge.io/</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[视频下载软件 Downie 4 for Mac v4.4.7 已激活开心版]]></title>
+        <id>https://blog.haibing.xyz/post/shi-pin-xia-zai-ruan-jian-downie-4-for-mac-v447-yi-ji-huo-kai-xin-ban/</id>
+        <link href="https://blog.haibing.xyz/post/shi-pin-xia-zai-ruan-jian-downie-4-for-mac-v447-yi-ji-huo-kai-xin-ban/">
+        </link>
+        <updated>2022-02-17T02:49:04.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>Downie for Mac是一个超级易于使用的视频下载工具，支持YouTube，Vimeo 等超过170个视频网站。它不会因为大量的选项而让用户困扰 - 它使用起来非常简单。最新破解版，实测支持国内的优酷和土豆以及国外的Youtube，如果你对视频下载有强烈的需求，那么Downie是一个简单易用的视频下载工具。</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><a href="https://pic.rmb.bdstatic.com/bjh/dbb50707bcc3d7b8e2d8f3273b45a44f.jpeg"><img src="https://pic.rmb.bdstatic.com/bjh/dbb50707bcc3d7b8e2d8f3273b45a44f.jpeg" alt="Downie4 -1.jpg" loading="lazy"></a></figure>
+<figure data-type="image" tabindex="2"><a href="https://pic.rmb.bdstatic.com/bjh/a105b1d920d465d0bb958ad1aa36c9a4.jpeg"><img src="https://pic.rmb.bdstatic.com/bjh/a105b1d920d465d0bb958ad1aa36c9a4.jpeg" alt="Downie4 -2.jpg" loading="lazy"></a></figure>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>Downie for Mac是一个超级易于使用的视频下载工具，支持YouTube，Vimeo 等超过170个视频网站。它不会因为大量的选项而让用户困扰 - 它使用起来非常简单。最新破解版，实测支持国内的优酷和土豆以及国外的Youtube，如果你对视频下载有强烈的需求，那么Downie是一个简单易用的视频下载工具。</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><a href="https://pic.rmb.bdstatic.com/bjh/dbb50707bcc3d7b8e2d8f3273b45a44f.jpeg"><img src="https://pic.rmb.bdstatic.com/bjh/dbb50707bcc3d7b8e2d8f3273b45a44f.jpeg" alt="Downie4 -1.jpg" loading="lazy"></a></figure>
+<figure data-type="image" tabindex="2"><a href="https://pic.rmb.bdstatic.com/bjh/a105b1d920d465d0bb958ad1aa36c9a4.jpeg"><img src="https://pic.rmb.bdstatic.com/bjh/a105b1d920d465d0bb958ad1aa36c9a4.jpeg" alt="Downie4 -2.jpg" loading="lazy"></a></figure>
+<!-- more -->
+<h2 id="downie-4-的新功能">Downie 4 的新功能</h2>
+<ul>
+<li>UI 重新设计–对 UI 进行了重新设计，手头有更多选择，而不会使 UI 混乱。</li>
+<li>菜单栏控件–从菜单栏控制应用程序–无需 Dock 图标。</li>
+<li>自定义–使用您自己的 Shell 脚本的自定义后处理，自定义文件名格式等等。</li>
+<li>更高的速度–与 Downie 3 相比，Downie 4 的 YouTube 视频加载速度提高了 6 倍！</li>
+<li>元数据改进– Downie 收集的元数据可以写入外部 JSON 文件中，以进行进一步的自定义处理。</li>
+<li>改进的用户引导提取-UGE 窗口现在具有历史记录，可以保存收藏夹等等。</li>
+<li>以及更多-许多小的改进，例如自定义命名方案，强制 MP4 下载的选项，更好的取消方法，优先级标志等。</li>
+</ul>
+<figure data-type="image" tabindex="3"><a href="https://pic.rmb.bdstatic.com/bjh/1a516f33125dbc72cc84891159bcd8bb.jpeg"><img src="https://pic.rmb.bdstatic.com/bjh/1a516f33125dbc72cc84891159bcd8bb.jpeg" alt="downie4-1.jpg" loading="lazy"></a></figure>
+<p>下载地址: https://pan.baidu.com/s/1WUDOJMGvOwS-t0ZoX50LqQ 提取码: efw2</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[django.core.exceptions.ImproperlyConfigured: SQLite 3.9.0 or later is required (found 3.7.17). 解决]]></title>
+        <id>https://blog.haibing.xyz/post/djangocoreexceptionsimproperlyconfigured-sqlite-390-or-later-is-required-found-3717-jie-jue/</id>
+        <link href="https://blog.haibing.xyz/post/djangocoreexceptionsimproperlyconfigured-sqlite-390-or-later-is-required-found-3717-jie-jue/">
+        </link>
+        <updated>2022-02-16T09:21:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>sqlite3版本太低导致，升级sqlite3</p>
+<p>脚本：</p>
+<pre><code class="language-shell">#!/bin/bash
+sqlite3 --version
+wget https://www.sqlite.org/2022/sqlite-autoconf-3370200.tar.gz
+tar -xaf sqlite-autoconf-3370200.tar.gz
+cd sqlite-autoconf-3370200/
+./configure --prefix=/usr/local/
+make &amp;&amp; make install
+mv /usr/bin/sqlite3 /usr/bin/sqlite3.bak
+ln -s /usr/local/bin/sqlite3 /usr/bin/sqlite3
+echo export LD_LIBRARY_PATH=&quot;/usr/local/lib&quot;&gt;&gt; ~/.bashrc
+source ~/.bashrc
+sqlite3 --version
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>sqlite3版本太低导致，升级sqlite3</p>
+<p>脚本：</p>
+<pre><code class="language-shell">#!/bin/bash
+sqlite3 --version
+wget https://www.sqlite.org/2022/sqlite-autoconf-3370200.tar.gz
+tar -xaf sqlite-autoconf-3370200.tar.gz
+cd sqlite-autoconf-3370200/
+./configure --prefix=/usr/local/
+make &amp;&amp; make install
+mv /usr/bin/sqlite3 /usr/bin/sqlite3.bak
+ln -s /usr/local/bin/sqlite3 /usr/bin/sqlite3
+echo export LD_LIBRARY_PATH=&quot;/usr/local/lib&quot;&gt;&gt; ~/.bashrc
+source ~/.bashrc
+sqlite3 --version
+</code></pre>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[shell笔记]]></title>
+        <id>https://blog.haibing.xyz/post/shell-bi-ji/</id>
+        <link href="https://blog.haibing.xyz/post/shell-bi-ji/">
+        </link>
+        <updated>2022-02-16T02:14:54.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="创建及执行">创建及执行</h2>
+<p>#!/bin/bash  #约定标记<br>
+echo &quot;Hello World !&quot;</p>
+<p>shell执行：</p>
+<p>chmod +x shell.sh</p>
+<p>./shell.sh</p>
+<h2 id="shell变量">shell变量</h2>
+<p>变量名= &quot;变量值&quot;</p>
+<pre><code class="language-shell">for file in `ls .`;do
+	echo &quot;$file&quot;
+done
+# 列出当前目录下的文件名
+</code></pre>
+<p>只读变量</p>
+<pre><code class="language-shell"> readonly 变量名
+</code></pre>
+<p>删除变量</p>
+<pre><code>unset 变量名
+</code></pre>
+<p>字符串</p>
+<pre><code class="language-shell">单双引号区别
+字符串拼接
+your_name=&quot;runoob&quot;
+# 使用双引号拼接
+greeting=&quot;hello, &quot;$your_name&quot; !&quot;
+greeting_1=&quot;hello, ${your_name} !&quot;
+echo $greeting  $greeting_1
+# 使用单引号拼接
+greeting_2='hello, '$your_name' !'
+greeting_3='hello, ${your_name} !'
+echo $greeting_2  $greeting_3
+</code></pre>
+<p>获取字符串长度</p>
+<pre><code class="language-shell">string=&quot;abcd&quot;
+echo ${#string} #输出 4
+</code></pre>
+<p>字符串截取</p>
+<pre><code class="language-shell"># ## 删除左边，保留右边 echo ${var##*字符} 两个#表示最后一个字符
+% %% 删除右边，保留左边 echo ${var%字符*} 两个%表示最后一个字符
+
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="创建及执行">创建及执行</h2>
+<p>#!/bin/bash  #约定标记<br>
+echo &quot;Hello World !&quot;</p>
+<p>shell执行：</p>
+<p>chmod +x shell.sh</p>
+<p>./shell.sh</p>
+<h2 id="shell变量">shell变量</h2>
+<p>变量名= &quot;变量值&quot;</p>
+<pre><code class="language-shell">for file in `ls .`;do
+	echo &quot;$file&quot;
+done
+# 列出当前目录下的文件名
+</code></pre>
+<p>只读变量</p>
+<pre><code class="language-shell"> readonly 变量名
+</code></pre>
+<p>删除变量</p>
+<pre><code>unset 变量名
+</code></pre>
+<p>字符串</p>
+<pre><code class="language-shell">单双引号区别
+字符串拼接
+your_name=&quot;runoob&quot;
+# 使用双引号拼接
+greeting=&quot;hello, &quot;$your_name&quot; !&quot;
+greeting_1=&quot;hello, ${your_name} !&quot;
+echo $greeting  $greeting_1
+# 使用单引号拼接
+greeting_2='hello, '$your_name' !'
+greeting_3='hello, ${your_name} !'
+echo $greeting_2  $greeting_3
+</code></pre>
+<p>获取字符串长度</p>
+<pre><code class="language-shell">string=&quot;abcd&quot;
+echo ${#string} #输出 4
+</code></pre>
+<p>字符串截取</p>
+<pre><code class="language-shell"># ## 删除左边，保留右边 echo ${var##*字符} 两个#表示最后一个字符
+% %% 删除右边，保留左边 echo ${var%字符*} 两个%表示最后一个字符
+
+</code></pre>
+<!-- more -->
+<p>单行注释</p>
+<pre><code class="language-shell"># 注释
+</code></pre>
+<p>多行注释</p>
+<pre><code class="language-shell">:&lt;&lt;EOF
+注释内容
+EOF
+</code></pre>
+<h2 id="shell传参">shell传参</h2>
+<pre><code class="language-shell">./test.sh 参数1 参数2 参数3 ...
+
+$0 执行的文件名及路径
+$1 $2 $3 第1、2、3个参数
+$* 显示传递的所有参数
+$@ 分别显示传递的所有参数
+
+echo &quot;-- \$* 演示 ---&quot;
+for i in &quot;$*&quot;; do
+    echo $i
+done
+
+echo &quot;-- \$@ 演示 ---&quot;
+for i in &quot;$@&quot;; do
+    echo $i
+done
+
+$ chmod +x test.sh 
+$ ./test.sh 1 2 3
+-- $* 演示 ---
+1 2 3
+-- $@ 演示 ---
+1
+2
+3
+
+</code></pre>
+<h2 id="shell数组">shell数组</h2>
+<p>定义数组</p>
+<pre><code class="language-shell">array_name=(value1 value2 ... valuen)
+</code></pre>
+<p>读取数组</p>
+<pre><code class="language-shell">${array_name[index]}
+</code></pre>
+<p>获取数组所有元素</p>
+<pre><code class="language-shell">${array_name[@]}
+${array_name[*]}
+</code></pre>
+<p>获取数组长度</p>
+<pre><code class="language-shell">${#array_name[@]}
+${#array_name[*]}
+</code></pre>
+<p>例：</p>
+<pre><code class="language-shell">#!/bin/bash
+test_array = (a b c d)
+
+echo &quot;第3个元素是：${test_array[2]}&quot;
+echo &quot;所有元素：${test_array[*]}&quot;
+echo &quot;数组长度：${#test_array[@]}&quot;
+
+#输出结果
+第3个元素是：c
+所有元素：a b c d
+数组长度：4
+</code></pre>
+<h2 id="shell运算符">shell运算符</h2>
+<ul>
+<li>算数运算符</li>
+</ul>
+<pre><code class="language-shell">#!/bin/bash
+
+
+a=10
+b=10
+
+val=`expr $a + $b` # expr 用``包含
+echo &quot;a + b : $val&quot;
+if [[ $a == $b ]] # 条件表达式要放在方括号之间，并且要有空格。
+then
+	echo &quot;a等于b&quot;
+fi
+
+# 使用 [[ ... ]] 条件判断结构，而不是 [ ... ]，能够防止脚本中的许多逻辑错误。比如，&amp;&amp;、||、&lt; 和 &gt; 操作符能够正常存在于 [[ ]] 条件判断结构中，但是如果出现在 [ ] 结构中的话，会报错。
+</code></pre>
+<ul>
+<li>关系运算符</li>
+</ul>
+<pre><code class="language-shell">-eq	检测两个数是否相等，相等返回 true。	[ $a -eq $b ] 返回 false。
+-ne	检测两个数是否不相等，不相等返回 true。	[ $a -ne $b ] 返回 true。
+-gt	检测左边的数是否大于右边的，如果是，则返回 true。	[ $a -gt $b ] 返回 false。
+-lt	检测左边的数是否小于右边的，如果是，则返回 true。	[ $a -lt $b ] 返回 true。
+-ge	检测左边的数是否大于等于右边的，如果是，则返回 true。	[ $a -ge $b ] 返回 false。
+-le	检测左边的数是否小于等于右边的，如果是，则返回 true。	[ $a -le $b ] 返回 true。
+</code></pre>
+<ul>
+<li>布尔运算符</li>
+</ul>
+<pre><code class="language-shell">!	非运算，表达式为 true 则返回 false，否则返回 true。	[ ! false ] 返回 true。
+-o	或运算，有一个表达式为 true 则返回 true。	[ $a -lt 20 -o $b -gt 100 ] 返回 true。
+-a	与运算，两个表达式都为 true 才返回 true。	[ $a -lt 20 -a $b -gt 100 ] 返回 false。
+</code></pre>
+<ul>
+<li>字符串运算符</li>
+</ul>
+<pre><code class="language-shell">=	检测两个字符串是否相等，相等返回 true。	[ $a = $b ] 返回 false。
+!=	检测两个字符串是否不相等，不相等返回 true。	[ $a != $b ] 返回 true。
+-z	检测字符串长度是否为0，为0返回 true。	[ -z $a ] 返回 false。
+-n	检测字符串长度是否不为 0，不为 0 返回 true。	[ -n &quot;$a&quot; ] 返回 true。
+$	检测字符串是否为空，不为空返回 true。	[ $a ] 返回 true。
+</code></pre>
+<ul>
+<li>文件测试运算符</li>
+</ul>
+<pre><code class="language-shell">-b file	检测文件是否是块设备文件，如果是，则返回 true。	[ -b $file ] 返回 false。
+-c file	检测文件是否是字符设备文件，如果是，则返回 true。	[ -c $file ] 返回 false。
+-d file	检测文件是否是目录，如果是，则返回 true。	[ -d $file ] 返回 false。
+-f file	检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f $file ] 返回 true。
+-g file	检测文件是否设置了 SGID 位，如果是，则返回 true。	[ -g $file ] 返回 false。
+-k file	检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。	[ -k $file ] 返回 false。
+-p file	检测文件是否是有名管道，如果是，则返回 true。	[ -p $file ] 返回 false。
+-u file	检测文件是否设置了 SUID 位，如果是，则返回 true。	[ -u $file ] 返回 false。
+-r file	检测文件是否可读，如果是，则返回 true。	[ -r $file ] 返回 true。
+-w file	检测文件是否可写，如果是，则返回 true。	[ -w $file ] 返回 true。
+-x file	检测文件是否可执行，如果是，则返回 true。	[ -x $file ] 返回 true。
+-s file	检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s $file ] 返回 true。
+-e file	检测文件（包括目录）是否存在，如果是，则返回 true。	[ -e $file ] 返回 true。
+</code></pre>
+<h2 id="echo-命令">echo 命令</h2>
+<pre><code class="language-shell">#!/bin/sh
+echo -e &quot;OK! \c&quot; # -e 开启转义 \c 不换行
+echo &quot;It is a test&quot;
+
+输出：OK!It is a test
+</code></pre>
+<pre><code class="language-shell">实例, 文件 test.sh:
+
+read -p &quot;请输入一段文字:&quot; -n 6 -t 5 -s password
+echo -e &quot;\npassword is $password&quot;参数说明：
+ -p 输入提示文字
+ -n 输入字符长度限制(达到6位，自动结束)
+ -t 输入限时
+ -s 隐藏输入内容
+ 
+ ./test.sh
+ 请输入一段文字:
+ password is abcdef
+</code></pre>
+<h2 id="frintf命令">frintf命令</h2>
+<pre><code>printf  format-string  [arguments...]
+</code></pre>
+<pre><code class="language-shell">$  printf &quot;%d %-2s %c %-3.2f\n&quot; 1111 &quot;abc&quot; &quot;def&quot; 3.1413
+1111 ab d  3.14
+
+%-2s 指一个宽度为 2 个字符（- 表示左对齐，没有则表示右对齐），任何字符都会被显示在 2 个字符宽的字符内，如果不足则自动以空格填充，超过也会将内容全部显示出来。
+
+%-3.2f 指格式化为小数，其中 .2 指保留2位小数
+</code></pre>
+<p><strong>%s %c %d %f</strong> 都是格式替代符，<strong>％s</strong> 输出一个字符串，<strong>％d</strong> 整型输出，<strong>％c</strong> 输出一个字符，<strong>％f</strong> 输出实数，以小数形式输出。</p>
+<h2 id="shell-test命令">shell test命令</h2>
+<p>数值测试</p>
+<pre><code class="language-shell">-eq	等于则为真
+-ne	不等于则为真
+-gt	大于则为真
+-ge	大于等于则为真
+-lt	小于则为真
+-le	小于等于则为真
+</code></pre>
+<p>字符串测试</p>
+<pre><code class="language-shell">=	等于则为真
+!=	不相等则为真
+-z 字符串	字符串的长度为零则为真
+-n 字符串	字符串的长度不为零则为真
+</code></pre>
+<p>文件测试</p>
+<pre><code class="language-shell">-e 文件名	如果文件存在则为真
+-r 文件名	如果文件存在且可读则为真
+-w 文件名	如果文件存在且可写则为真
+-x 文件名	如果文件存在且可执行则为真
+-s 文件名	如果文件存在且至少有一个字符则为真
+-d 文件名	如果文件存在且为目录则为真
+-f 文件名	如果文件存在且为普通文件则为真
+-c 文件名	如果文件存在且为字符型特殊文件则为真
+-b 文件名	如果文件存在且为块特殊文件则为真
+
+-O 判断对象是否存在，并且属于当前用户
+-G 判断对象是否存在，并且属于当前用户组
+-nt 判断file1是否比file2新  [ &quot;/data/file1&quot; -nt &quot;/data/file2&quot; ]
+-ot 判断file1是否比file2旧  [ &quot;/data/file1&quot; -ot &quot;/data/file2&quot; ]
+</code></pre>
+<pre><code class="language-shell">另外，Shell 还提供了与( -a )、或( -o )、非( ! )三个逻辑操作符用于将测试条件连接起来，其优先级为： ! 最高， -a 次之， -o 最低。例如：
+
+cd /bin
+if test -e ./notFile -o -e ./bash
+then
+    echo '至少有一个文件存在!'
+else
+    echo '两个文件都不存在'
+fi
+</code></pre>
+<h2 id="流程控制">流程控制</h2>
+<p>if else</p>
+<pre><code class="language-shell">if condition1
+then
+	command1
+	command2
+elif condition2
+then
+	command3
+else
+	commadn4
+fi
+</code></pre>
+<p>For 循环</p>
+<pre><code class="language-shell">for loop in 1 2 3
+do
+	echo &quot;$loop&quot;
+done
+</code></pre>
+<p>While语句</p>
+<pre><code class="language-shell">while condition
+do
+	command
+done
+</code></pre>
+<p>无限循环</p>
+<pre><code class="language-shell">while :
+do
+    command
+done
+
+或者
+
+for (( ; ; ))
+
+</code></pre>
+<p>until循环</p>
+<pre><code class="language-shell">#!/bin/bash
+
+a=0
+
+until [ ! $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+</code></pre>
+<p>Case...esac</p>
+<pre><code class="language-shell">case 值 in
+模式1)	
+	command
+	;;	#;;表示break
+模式2)
+	command
+	;;
+esac
+</code></pre>
+<p>例</p>
+<pre><code class="language-shell">echo '输入 1 到 4 之间的数字:'
+echo '你输入的数字为:'
+read aNum
+case $aNum in
+    1)  echo '你选择了 1'
+    ;;
+    2)  echo '你选择了 2'
+    ;;
+    3)  echo '你选择了 3'
+    ;;
+    4)  echo '你选择了 4'
+    ;;
+    *)  echo '你没有输入 1 到 4 之间的数字'
+    ;;
+esac
+</code></pre>
+<p>调出循环</p>
+<p>break</p>
+<p>continue</p>
+<h2 id="shell函数">shell函数</h2>
+<pre><code class="language-shell">function funname [()]
+
+{
+
+    action;
+
+    [return int;]
+
+}
+</code></pre>
+<p>例：</p>
+<pre><code class="language-shell">#!/bin/bash
+function demofun1(){
+	echo &quot;shell函数demo&quot;
+	return 0
+}
+demofun1
+</code></pre>
+<h2 id="shell输入输出重定向">shell输入/输出重定向</h2>
+<pre><code class="language-shell">command &gt; file	将输出重定向到 file。
+command &lt; file	将输入重定向到 file。
+command &gt;&gt; file	将输出以追加的方式重定向到 file。
+n &gt; file	将文件描述符为 n 的文件重定向到 file。
+n &gt;&gt; file	将文件描述符为 n 的文件以追加的方式重定向到 file。
+n &gt;&amp; m	将输出文件 m 和 n 合并。
+n &lt;&amp; m	将输入文件 m 和 n 合并。
+&lt;&lt; tag	将开始标记 tag 和结束标记 tag 之间的内容作为输入。
+</code></pre>
+<pre><code class="language-shell">ls &gt;&gt; ls.txt
+cat ls.txt
+
+command 2&gt;&gt;file #报错追加到文件末尾
+
+command &gt;&gt; file 2&gt;&amp;1
+
+文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。
+</code></pre>
+<pre><code class="language-shell">command &gt; /dev/null # /dev/null 是一个特殊的文件，写入到它的内容都会被丢弃
+
+command &gt; /dev/null 2&gt;&amp;1  # 禁止输出
+</code></pre>
+<p>输入重定向</p>
+<pre><code class="language-shell">command1 &lt; file1
+</code></pre>
+<p>Here Document :它的作用是将两个 delimiter 之间的内容(document) 作为输入传递给 command。</p>
+<pre><code class="language-shell">command &lt;&lt; delimiter
+    document
+delimiter
+
+例：
+
+</code></pre>
+<h2 id="shell文件包含">shell文件包含</h2>
+<pre><code class="language-shell">. filename   # 注意点号(.)和文件名中间有一空格
+
+或
+
+source filename
+</code></pre>
+<p>例：</p>
+<pre><code>#!/bin/bash
+# shell1.sh
+name=(1 2 3 4 5) #定义那么数组
+</code></pre>
+<pre><code class="language-shell">#!/bin/bash
+# shell2.sh
+. ./shell1.sh # 引用shell1.sh
+for i in ${name[*]};do # 循环显示数组元素
+	echo &quot;$i&quot;
+done
+
+[root@VM-16-2-centos ~]# ./shell2.sh
+1
+2
+3
+4
+5
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python脚本笔记]]></title>
+        <id>https://blog.haibing.xyz/post/python-jiao-ben-bi-ji/</id>
+        <link href="https://blog.haibing.xyz/post/python-jiao-ben-bi-ji/">
+        </link>
+        <updated>2022-02-15T08:37:35.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="脚本项目生成依赖包清单">脚本项目生成依赖包清单</h2>
+<pre><code class="language-shell">pip3 install pipreqs
+
+进入项目主目录
+pipreqs ./
+
+生成requirements.txt
+
+安装依赖库：
+sudo pip3 install -r requirements.txt
+</code></pre>
+<h2 id="request脚本转换工具">request脚本转换工具</h2>
+<p>https://curlconverter.com/#</p>
+<figure data-type="image" tabindex="1"><img src="https://curlconverter.com/images/screenshot.png" alt="screenshot of the Chrome DevTools" loading="lazy"></figure>
+<h2 id="脚本定时运行crontab">脚本定时运行crontab</h2>
+<pre><code class="language-shell">crontab [ -u user ] { -l | -r | -e }
+
+参数说明：
+
+-e : 执行文字编辑器来设定时程表，内定的文字编辑器是 VI，如果你想用别的文字编辑器，则请先设定 VISUAL 环境变数来指定使用那个文字编辑器(比如说 setenv VISUAL joe)
+-r : 删除目前的时程表
+-l : 列出目前的时程表
+</code></pre>
+<pre><code class="language-makedown">*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+</code></pre>
+<pre><code class="language-shell">0 */2 * * * /sbin/service httpd restart  意思是每两个小时重启一次apache 
+
+50 7 * * * /sbin/service sshd start  意思是每天7：50开启ssh服务 
+
+50 22 * * * /sbin/service sshd stop  意思是每天22：50关闭ssh服务 
+
+0 0 1,15 * * fsck /home  每月1号和15号检查/home 磁盘 
+
+1 * * * * /home/bruce/backup  每小时的第一分执行 /home/bruce/backup这个文件 
+
+00 03 * * 1-5 find /home &quot;*.xxx&quot; -mtime +4 -exec rm {} \;  每周一至周五3点钟，在目录/home中，查找文件名为*.xxx的文件，并删除4天前的文件。
+
+30 6 */10 * * ls  意思是每月的1、11、21、31日是的6：30执行一次ls命令
+</code></pre>
+<h3 id="删除定时任务">删除定时任务</h3>
+<p>查看已创建任务：</p>
+<pre><code class="language-shell">[root@VM-16-2-centos yokai]# crontab -l
+*/5 * * * * flock -xn /tmp/stargate.lock -c '/usr/local/qcloud/stargate/admin/start.sh &gt; /dev/null 2&gt;&amp;1 &amp;'
+[root@VM-16-2-centos yokai]#
+</code></pre>
+<p>进入命令配置界面：</p>
+<pre><code class="language-shell">crontab -e
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://haibing.xyz/post-images/1645004369921.png" alt="" loading="lazy"></figure>
+<p>vi编辑配置文件</p>
+<p>:wq 退出保存</p>
+<blockquote>
+<p>**注意：**当程序在你所指定的时间执行后，系统会发一封邮件给当前的用户，显示该程序执行的内容，若是你不希望收到这样的邮件，请在每一行空一格之后加上 <strong>&gt; /dev/null 2&gt;&amp;1</strong> 即可，如：</p>
+</blockquote>
+<pre><code>20 03 * * * . /etc/profile;/bin/sh /var/www/runoob/test.sh &gt; /dev/null 2&gt;&amp;1 
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="脚本项目生成依赖包清单">脚本项目生成依赖包清单</h2>
+<pre><code class="language-shell">pip3 install pipreqs
+
+进入项目主目录
+pipreqs ./
+
+生成requirements.txt
+
+安装依赖库：
+sudo pip3 install -r requirements.txt
+</code></pre>
+<h2 id="request脚本转换工具">request脚本转换工具</h2>
+<p>https://curlconverter.com/#</p>
+<figure data-type="image" tabindex="1"><img src="https://curlconverter.com/images/screenshot.png" alt="screenshot of the Chrome DevTools" loading="lazy"></figure>
+<h2 id="脚本定时运行crontab">脚本定时运行crontab</h2>
+<pre><code class="language-shell">crontab [ -u user ] { -l | -r | -e }
+
+参数说明：
+
+-e : 执行文字编辑器来设定时程表，内定的文字编辑器是 VI，如果你想用别的文字编辑器，则请先设定 VISUAL 环境变数来指定使用那个文字编辑器(比如说 setenv VISUAL joe)
+-r : 删除目前的时程表
+-l : 列出目前的时程表
+</code></pre>
+<pre><code class="language-makedown">*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+</code></pre>
+<pre><code class="language-shell">0 */2 * * * /sbin/service httpd restart  意思是每两个小时重启一次apache 
+
+50 7 * * * /sbin/service sshd start  意思是每天7：50开启ssh服务 
+
+50 22 * * * /sbin/service sshd stop  意思是每天22：50关闭ssh服务 
+
+0 0 1,15 * * fsck /home  每月1号和15号检查/home 磁盘 
+
+1 * * * * /home/bruce/backup  每小时的第一分执行 /home/bruce/backup这个文件 
+
+00 03 * * 1-5 find /home &quot;*.xxx&quot; -mtime +4 -exec rm {} \;  每周一至周五3点钟，在目录/home中，查找文件名为*.xxx的文件，并删除4天前的文件。
+
+30 6 */10 * * ls  意思是每月的1、11、21、31日是的6：30执行一次ls命令
+</code></pre>
+<h3 id="删除定时任务">删除定时任务</h3>
+<p>查看已创建任务：</p>
+<pre><code class="language-shell">[root@VM-16-2-centos yokai]# crontab -l
+*/5 * * * * flock -xn /tmp/stargate.lock -c '/usr/local/qcloud/stargate/admin/start.sh &gt; /dev/null 2&gt;&amp;1 &amp;'
+[root@VM-16-2-centos yokai]#
+</code></pre>
+<p>进入命令配置界面：</p>
+<pre><code class="language-shell">crontab -e
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://blog.haibing.xyz/post-images/1645004369921.png" alt="" loading="lazy"></figure>
+<p>vi编辑配置文件</p>
+<p>:wq 退出保存</p>
+<blockquote>
+<p>**注意：**当程序在你所指定的时间执行后，系统会发一封邮件给当前的用户，显示该程序执行的内容，若是你不希望收到这样的邮件，请在每一行空一格之后加上 <strong>&gt; /dev/null 2&gt;&amp;1</strong> 即可，如：</p>
+</blockquote>
+<pre><code>20 03 * * * . /etc/profile;/bin/sh /var/www/runoob/test.sh &gt; /dev/null 2&gt;&amp;1 
+</code></pre>
+<!-- more -->
+]]></content>
+    </entry>
+</feed>
